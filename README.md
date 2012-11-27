@@ -2,12 +2,9 @@
 
 C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차근차근 따라잡기** 위해 만든 피처 테스트 프로젝트
 
-## version
+## 2.0
 
-### 2.0
-
-* [What's New in the C# 2.0 Language and Compiler](http://msdn.microsoft.com/en-US/library/7cz8t42e)
-* [Generics](http://msdn.microsoft.com/en-US/library/512aeb7t)
+* [Generics](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/Generics)
 * Iterators
 * Partial Classes
 * Nullable Types
@@ -21,3 +18,7 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 * Friend Assemblies
 * Inline warning control
 * volatile
+
+### reference
+* [What's New in the C# 2.0 Language and Compiler](http://msdn.microsoft.com/en-US/library/7cz8t42e)
+
