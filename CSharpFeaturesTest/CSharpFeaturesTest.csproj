@@ -51,10 +51,15 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="V20\AnonymousMethods\AnonymousMethodsTest.cs" />
     <Compile Include="V20\Generics\ConstraintsTest.cs" />
     <Compile Include="V20\Generics\DefaultKeywordTest.cs" />
     <Compile Include="V20\Generics\IListArrayTest.cs" />
     <Compile Include="V20\Generics\ReflectionTest.cs" />
+    <Compile Include="V20\Iterators\IteratorsTest.cs" />
+    <Compile Include="V20\NamespaceAliasQualifier\NamespaceAliasQualifierTest.cs" />
+    <Compile Include="V20\NullableTypes\NullableTypesTest.cs" />
+    <Compile Include="V20\PartialClasses\PartialClassesTest.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
