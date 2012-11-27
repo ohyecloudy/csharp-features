@@ -5,11 +5,11 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 ## 2.0
 
 * [Generics](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/Generics)
-* Iterators
-* Partial Classes
-* Nullable Types
-* Anonymous Methods
-* Namespace alias qualifier
+* [Iterators](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/Iterators/IteratorsTest.cs)
+* [Partial Classes](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V20/PartialClasses/PartialClassesTest.cs)
+* [Nullable Types](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/NullableTypes/NullableTypesTest.cs)
+* [Anonymous Methods](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/AnonymousMethods/AnonymousMethodsTest.cs)
+* [Namespace alias qualifier](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/NamespaceAliasQualifier/NamespaceAliasQualifierTest.cs)
 * Static Classes
 * External Assembly Alias
 * Property Accessor Accessibility
