@@ -22,3 +22,17 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 ### reference
 * [What's New in the C# 2.0 Language and Compiler](http://msdn.microsoft.com/en-US/library/7cz8t42e)
 
+## 3.0
+* LINQ
+* Implicitly Typed Local Variables and Arrays
+* Object Initializers
+* Collection Initializers
+* Extension Methods
+* Anonymous Types
+* Lambda Expressions
+* Auto-Implemented Properties
+* Partial Method Definitions
+
+### reference
+* [What's New in Visual C#](http://msdn.microsoft.com/en-us/library/bb383815)
+
