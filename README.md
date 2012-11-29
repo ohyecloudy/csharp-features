@@ -25,14 +25,14 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 
 ## 3.0
 * LINQ
-* Implicitly Typed Local Variables and Arrays
-* Object Initializers
-* Collection Initializers
-* Extension Methods
+* [Implicitly Typed Local Variables and Arrays](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/ImplicitlyTypedLocalVariablesAndArrays/ImplicitlyTypedLocalVariablesAndArraysTest.cs)
+* [Object Initializers](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/ObjectInitializers/ObjectInitializersTest.cs)
+* [Collection Initializers](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/CollectionInitializers/CollectionInitializersTest.cs)
+* [Extension Methods](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/ExtensionMethods/ExtensionMethodsTest.cs)
 * Anonymous Types
-* Lambda Expressions
-* Auto-Implemented Properties
-* Partial Method Definitions
+* [Lambda Expressions](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/LambdaExpressions/LambdaExpressionsTest.cs)
+* [Auto-Implemented Properties](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/AutoImplementedProperties/AutoImplementedPropertiesTest.cs)
+* [Partial Method Definitions](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V30/PartialMethodDefinitions)
 
 ### reference
 * [What's New in Visual C#](http://msdn.microsoft.com/en-us/library/bb383815)
