@@ -69,6 +69,14 @@
     <Compile Include="V20\PartialClasses\PartialClassesTest.cs" />
     <Compile Include="V20\PropertyAccessorAccessibility\PropertyAccessorAccessibilityTest.cs" />
     <Compile Include="V20\StaticClasses\StaticClassesTest.cs" />
+    <Compile Include="V30\AutoImplementedProperties\AutoImplementedPropertiesTest.cs" />
+    <Compile Include="V30\CollectionInitializers\CollectionInitializersTest.cs" />
+    <Compile Include="V30\ExtensionMethods\ExtensionMethodsTest.cs" />
+    <Compile Include="V30\ImplicitlyTypedLocalVariablesAndArrays\ImplicitlyTypedLocalVariablesAndArraysTest.cs" />
+    <Compile Include="V30\LambdaExpressions\LambdaExpressionsTest.cs" />
+    <Compile Include="V30\ObjectInitializers\ObjectInitializersTest.cs" />
+    <Compile Include="V30\PartialMethodDefinitions\PartialMethodDefinitionsTest.cs" />
+    <Compile Include="V30\PartialMethodDefinitions\PartialMethodImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\V20FriendAssmbly\V20FriendAssmbly.csproj">
