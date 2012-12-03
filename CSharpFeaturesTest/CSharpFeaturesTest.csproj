@@ -69,6 +69,7 @@
     <Compile Include="V20\PartialClasses\PartialClassesTest.cs" />
     <Compile Include="V20\PropertyAccessorAccessibility\PropertyAccessorAccessibilityTest.cs" />
     <Compile Include="V20\StaticClasses\StaticClassesTest.cs" />
+    <Compile Include="V30\AnonymousTypes\AnonymousTypesTest.cs" />
     <Compile Include="V30\AutoImplementedProperties\AutoImplementedPropertiesTest.cs" />
     <Compile Include="V30\CollectionInitializers\CollectionInitializersTest.cs" />
     <Compile Include="V30\ExtensionMethods\ExtensionMethodsTest.cs" />
