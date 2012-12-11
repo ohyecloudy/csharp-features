@@ -24,7 +24,7 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 * [What's New in the C# 2.0 Language and Compiler](http://msdn.microsoft.com/en-US/library/7cz8t42e)
 
 ## 3.0
-* LINQ
+* [LINQ](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V30/Linq)
 * [Implicitly Typed Local Variables and Arrays](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/ImplicitlyTypedLocalVariablesAndArrays/ImplicitlyTypedLocalVariablesAndArraysTest.cs)
 * [Object Initializers](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/ObjectInitializers/ObjectInitializersTest.cs)
 * [Collection Initializers](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V30/CollectionInitializers/CollectionInitializersTest.cs)
@@ -35,5 +35,5 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 * [Partial Method Definitions](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V30/PartialMethodDefinitions)
 
 ### reference
-* [What's New in Visual C#](http://msdn.microsoft.com/en-us/library/bb383815)
+* [What's New in Visual C#](http://bit.ly/ST2IVn)
 
