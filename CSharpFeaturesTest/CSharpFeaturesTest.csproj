@@ -38,6 +38,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -75,6 +77,24 @@
     <Compile Include="V30\ExtensionMethods\ExtensionMethodsTest.cs" />
     <Compile Include="V30\ImplicitlyTypedLocalVariablesAndArrays\ImplicitlyTypedLocalVariablesAndArraysTest.cs" />
     <Compile Include="V30\LambdaExpressions\LambdaExpressionsTest.cs" />
+    <Compile Include="V30\Linq\AggregationOperationsTests.cs" />
+    <Compile Include="V30\Linq\ConcatenationOperationsTests.cs" />
+    <Compile Include="V30\Linq\ConvertingDataTypesTests.cs" />
+    <Compile Include="V30\Linq\ElementOperationsTests.cs" />
+    <Compile Include="V30\Linq\EqualityOperationsTests.cs" />
+    <Compile Include="V30\Linq\FilteringDataTests.cs" />
+    <Compile Include="V30\Linq\FromClauseTests.cs" />
+    <Compile Include="V30\Linq\GenerationOperationsTests.cs" />
+    <Compile Include="V30\Linq\GroupingDataTests.cs" />
+    <Compile Include="V30\Linq\JoinOperationsTests.cs" />
+    <Compile Include="V30\Linq\LetClauseTests.cs" />
+    <Compile Include="V30\Linq\LinqBasicTests.cs" />
+    <Compile Include="V30\Linq\LinqToXmlTests.cs" />
+    <Compile Include="V30\Linq\PartitioningDataTests.cs" />
+    <Compile Include="V30\Linq\ProjectionOperationsTests.cs" />
+    <Compile Include="V30\Linq\QuantifierOperationsTests.cs" />
+    <Compile Include="V30\Linq\SetOperationsTests.cs" />
+    <Compile Include="V30\Linq\SortingDataTests.cs" />
     <Compile Include="V30\ObjectInitializers\ObjectInitializersTest.cs" />
     <Compile Include="V30\PartialMethodDefinitions\PartialMethodDefinitionsTest.cs" />
     <Compile Include="V30\PartialMethodDefinitions\PartialMethodImpl.cs" />
