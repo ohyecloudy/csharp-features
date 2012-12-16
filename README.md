@@ -37,3 +37,12 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 ### reference
 * [What's New in Visual C#](http://bit.ly/ST2IVn)
 
+## 4.0
+* Dynamic Support
+* Named and Optional Arguments
+* Type Equivalence Support
+* Generic Covariance and Contravariance
+
+### reference
+* [What's New in Visual C# 2010](http://bit.ly/RwZ4Cj)
+
