@@ -37,6 +37,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
@@ -98,6 +99,10 @@
     <Compile Include="V30\ObjectInitializers\ObjectInitializersTest.cs" />
     <Compile Include="V30\PartialMethodDefinitions\PartialMethodDefinitionsTest.cs" />
     <Compile Include="V30\PartialMethodDefinitions\PartialMethodImpl.cs" />
+    <Compile Include="V40\DynamicSupport\DynamicSupportTests.cs" />
+    <Compile Include="V40\GenericCovarianceAndContravariance\VarianceInDelegatesTests.cs" />
+    <Compile Include="V40\GenericCovarianceAndContravariance\VariantGenericInterfacesTests.cs" />
+    <Compile Include="V40\NamedAndOptionalArguments\NamedAndOptionalArgumentsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\V20FriendAssmbly\V20FriendAssmbly.csproj">
