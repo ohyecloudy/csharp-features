@@ -38,10 +38,10 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 * [What's New in Visual C#](http://bit.ly/ST2IVn)
 
 ## 4.0
-* Dynamic Support
-* Named and Optional Arguments
-* Type Equivalence Support
-* Generic Covariance and Contravariance
+* [Dynamic Support](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V40/DynamicSupport/DynamicSupportTests.cs)
+* [Named and Optional Arguments](https://github.com/ohyecloudy/csharp-features/blob/master/CSharpFeaturesTest/V40/NamedAndOptionalArguments/NamedAndOptionalArgumentsTests.cs)
+* [Type Equivalence Support](http://goo.gl/Bc5zi)
+* [Generic Covariance and Contravariance](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V40/GenericCovarianceAndContravariance)
 
 ### reference
 * [What's New in Visual C# 2010](http://bit.ly/RwZ4Cj)
