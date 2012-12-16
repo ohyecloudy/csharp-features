@@ -171,19 +171,14 @@ namespace CSharpFeaturesTest.V30.Linq
                 null,
                 (int?)po.Element("Address").Element("ohyecloudy"),
                 "nullable type으로 캐스팅하는 게 안전하다. Element가 없는 경우에도 대처");
-
-            bool raisedException = false;
-            try
-            {
-                int invalid = (int)po.Element("Address").Element("ohyecloudy");
-            }
-            catch (ArgumentNullException)
-            {
-                raisedException = true;
-            }
-            Assert.IsTrue(
-                raisedException,
-                "ValueType으로 캐스팅하면 Element가 없는 경우 예외를 던진다");
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException), "ValueType으로 캐스팅하면 Element가 없는 경우 예외를 던진다")]
+        public void ElementValueExceptionTest()
+        {
+            XElement po = CreateTestXml();
+            int invalid = (int)po.Element("Address").Element("ohyecloudy");
         }
 
         [TestMethod]

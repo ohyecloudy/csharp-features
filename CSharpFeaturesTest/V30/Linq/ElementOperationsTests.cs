@@ -35,23 +35,16 @@ namespace CSharpFeaturesTest.V30.Linq
         }
 
         [TestMethod]
-        public void FirstMethodTest()
+        [ExpectedException(typeof(InvalidOperationException), "소스 시퀀스가 비었을 경우 예외를 던진다.")]
+        public void FirstMethodExceptionTest()
+        {
+            Enumerable.Empty<int>().First();
+        }
+
+        [TestMethod]
+        public void FirstMehtodTest()
         {
             Assert.AreEqual(5, Enumerable.Range(5, 2).First());
-
-            {
-                bool raisedException = false;
-                try
-                {
-                    Enumerable.Empty<int>().First();
-                }
-                catch (InvalidOperationException)
-                {
-                    raisedException = true;
-                }
-
-                Assert.IsTrue(raisedException, "소스 시퀀스가 비었을 경우 예외를 던진다.");
-            }
 
             Assert.AreEqual(
                 6, 

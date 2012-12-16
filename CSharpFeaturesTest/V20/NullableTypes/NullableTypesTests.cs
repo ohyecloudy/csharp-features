@@ -28,21 +28,12 @@ namespace CSharpFeaturesTest.V20.NullableTypes
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException), "HasValue가 false일 때, Value로 접근하면 예외 발생")]
         public void ExceptionTest()
         {
             // int? num과 같다
             Nullable<int> num = null;
-
-            bool raisedException = false;
-            try
-            {
-                int val = num.Value;
-            }
-            catch (InvalidOperationException)
-            {
-                raisedException = true;
-            }
-            Assert.IsTrue(raisedException, "HasValue가 false일 때, Value로 접근하면 예외 발생");
+            int val = num.Value;
         }
 
         [TestMethod]
