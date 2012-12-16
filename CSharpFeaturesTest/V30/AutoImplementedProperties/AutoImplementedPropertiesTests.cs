@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V30.AutoImplementedProperties
 {
     [TestClass]
-    public class AutoImplementedPropertiesTest
+    public class AutoImplementedPropertiesTests
     {
         class Customer
         {
@@ -24,7 +24,7 @@ namespace CSharpFeaturesTest.V30.AutoImplementedProperties
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void AutoImplementedPropertiesTest()
         {
             Customer c = new Customer();
             

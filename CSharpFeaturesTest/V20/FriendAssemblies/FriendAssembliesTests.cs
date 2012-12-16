@@ -7,10 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V20.FriendAssemblies
 {
     [TestClass]
-    public class FriendAssembliesTest
+    public class FriendAssembliesTests
     {
         [TestMethod]
-        public void BasicTest()
+        public void FriendAssembliesTest()
         {
             v20FriendAssembly.InternalClass ic = new v20FriendAssembly.InternalClass();
             Assert.AreEqual(5, ic.PublicProperty);

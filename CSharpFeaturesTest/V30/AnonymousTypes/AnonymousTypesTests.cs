@@ -7,10 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V30.AnonymousTypes
 {
     [TestClass]
-    public class AnonymousTypesTest
+    public class AnonymousTypesTests
     {
         [TestMethod]
-        public void BasicTest()
+        public void AnonymousTypesTest()
         {
             var v = new { Amount = 108, Message = "Hello" };
             

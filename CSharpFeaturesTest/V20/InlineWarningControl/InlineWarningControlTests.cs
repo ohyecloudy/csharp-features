@@ -8,7 +8,7 @@ using System;
 namespace CSharpFeaturesTest.V20.InlineWarningControl
 {
     [TestClass]
-    public class InlineWarningControlTest
+    public class InlineWarningControlTests
     {
         // 414, 3021 warning을 비활성화
 #pragma warning disable 414, 3021

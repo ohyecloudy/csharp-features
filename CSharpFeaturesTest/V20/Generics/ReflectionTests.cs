@@ -27,7 +27,7 @@ namespace CSharpFeaturesTest.V20.Generics
     public class Non { }
 
     [TestClass]
-    public class ReflectionTest
+    public class ReflectionTests
     {
         [TestMethod]
         public void IsGenericTypeTest()

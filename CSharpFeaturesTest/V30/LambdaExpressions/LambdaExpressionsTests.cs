@@ -8,12 +8,12 @@ using System;
 namespace CSharpFeaturesTest.V30.LambdaExpressions
 {
     [TestClass]
-    public class LambdaExpressionsTest
+    public class LambdaExpressionsTests
     {
         delegate int del(int input);
 
         [TestMethod]
-        public void BasicTest()
+        public void LambdaExpressionsTest()
         {
             // =>는 goes to라고 읽는다.
             del myDel = x => x * x;

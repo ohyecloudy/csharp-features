@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V20.PartialClasses
 {
     [TestClass]
-    public class PartialClassesTest
+    public class PartialClassesTests
     {
         partial class Numbers
         {
@@ -45,7 +45,7 @@ namespace CSharpFeaturesTest.V20.PartialClasses
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void PartialClassesTest()
         {
             Numbers n = new Numbers();
             Assert.AreEqual(1, n.ReturnOne());

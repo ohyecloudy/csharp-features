@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V20.StaticClasses
 {
     [TestClass]
-    public class StaticClassesTest
+    public class StaticClassesTests
     {
         static class Util
         {
@@ -24,7 +24,7 @@ namespace CSharpFeaturesTest.V20.StaticClasses
         // static class DerivedUtil : Util { }
         
         [TestMethod]
-        public void BasicTest()
+        public void StaticClassesTest()
         {
             // 인스턴스를 만들 수 없다.
             // Util util = new Util();

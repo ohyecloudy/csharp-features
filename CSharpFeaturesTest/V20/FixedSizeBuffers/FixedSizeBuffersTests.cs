@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V20.FixedSizeBuffers
 {
     [TestClass]
-    public class FixedSizeBuffersTest
+    public class FixedSizeBuffersTests
     {
         // unsafe block이나 modifier를 붙여줘야 함
         struct FixedSizeBuffer
@@ -18,7 +18,7 @@ namespace CSharpFeaturesTest.V20.FixedSizeBuffers
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void FixedSizeBuffersTest()
         {
             FixedSizeBuffer buffer;
             for (int i = 0; i < 30; ++i)

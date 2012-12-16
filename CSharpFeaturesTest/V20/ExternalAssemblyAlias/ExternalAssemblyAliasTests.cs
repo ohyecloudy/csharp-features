@@ -8,13 +8,13 @@ using System.Runtime.InteropServices;
 namespace CSharpFeaturesTest.V20.ExternalAssemblyAlias
 {
     [TestClass]
-    public class ExternalAssemblyAliasTest
+    public class ExternalAssemblyAliasTests
     {
         [DllImport("Shlwapi.dll")]
         static extern bool PathFileExistsA(string path);
                                 
         [TestMethod]
-        public void BasicTest()
+        public void ExternalAssemblyAliasTest()
         {
             Assert.IsTrue(PathFileExistsA("c:\\"));
             Assert.IsTrue(PathFileExistsA("c:\\windows"));

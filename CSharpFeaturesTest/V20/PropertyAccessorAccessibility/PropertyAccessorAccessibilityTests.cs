@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V20.PropertyAccessorAccessibility
 {
     [TestClass]
-    public class PropertyAccessorAccessibilityTest
+    public class PropertyAccessorAccessibilityTests
     {
         class Parent
         {
@@ -51,7 +51,7 @@ namespace CSharpFeaturesTest.V20.PropertyAccessorAccessibility
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void PropertyAccessorAccessibilityTest()
         {
             Parent parent = new Parent();
             Assert.AreEqual("parent", parent.Name);

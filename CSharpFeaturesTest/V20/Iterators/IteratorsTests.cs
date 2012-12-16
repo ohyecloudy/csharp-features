@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CSharpFeaturesTest.V20.Iterators
 {
     [TestClass]
-    public class IteratorsTest
+    public class IteratorsTests
     {
         class DayOfTheWeek : IEnumerable
         {
@@ -27,7 +27,7 @@ namespace CSharpFeaturesTest.V20.Iterators
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void IteratorsTest()
         {
             List<string> l = new List<string>();
 

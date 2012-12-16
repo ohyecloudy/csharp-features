@@ -8,10 +8,10 @@ using System;
 namespace CSharpFeaturesTest.V20.NullableTypes
 {
     [TestClass]
-    public class NullableTypesTest
+    public class NullableTypesTests
     {
         [TestMethod]
-        public void BasicTest()
+        public void NullableTypesTest()
         {
             // reference type은 불가능. null을 표현할 수 없는 value type만 가능하다.
             // 만든 목적이 그거기 땜씨롱.

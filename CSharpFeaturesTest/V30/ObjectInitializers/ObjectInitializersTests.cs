@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V30.ObjectInitializers
 {
     [TestClass]
-    public class ObjectInitializersTest
+    public class ObjectInitializersTests
     {
         class TargetClass
         {
@@ -17,7 +17,7 @@ namespace CSharpFeaturesTest.V30.ObjectInitializers
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void ObjectInitializersTest()
         {
             // object initializer 사용
             TargetClass t = new TargetClass

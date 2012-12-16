@@ -42,7 +42,7 @@ namespace CSharpFeaturesTest.V20.Generics
     }
 
     [TestClass]
-    public class IListArrayTest
+    public class IListArrayTests
     {
         [TestMethod]
         public void AccumulateTest()

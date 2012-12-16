@@ -15,10 +15,10 @@ namespace CSharpFeaturesTest.V30.ImplicitlyTypedLocalVariablesAndArrays
     }
 
     [TestClass]
-    public class ImplicitlyTypedLocalVariablesAndArraysTest
+    public class ImplicitlyTypedLocalVariablesAndArraysTests
     {
         [TestMethod]
-        public void BasicTest()
+        public void ImplicitlyTypedLocalVariablesAndArraysTest()
         {
             var i = 5;
             Assert.AreEqual("System.Int32", i.GetType().FullName, "int로 컴파일");

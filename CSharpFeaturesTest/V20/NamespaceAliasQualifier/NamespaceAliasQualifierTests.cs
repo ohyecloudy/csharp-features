@@ -10,7 +10,7 @@ using globalSystemAlias = global::System;
 namespace CSharpFeaturesTest.V20.NamespaceAliasQualifier
 {
     [TestClass]
-    public class NamespaceAliasQualifierTest
+    public class NamespaceAliasQualifierTests
     {
         public static class Math
         {
@@ -22,7 +22,7 @@ namespace CSharpFeaturesTest.V20.NamespaceAliasQualifier
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void NamespaceAliasQualifierTest()
         {
             Assert.AreEqual(-5, Math.Abs(-5), "local에 정의한 Math.Abs 때문에 System.Math.Abs가 가린다.");
             Assert.AreEqual(5, global::System.Math.Abs(-5), "global:: 로 global namespace부터 이름 검색");

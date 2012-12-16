@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CSharpFeaturesTest.V20.AnonymousMethods
 {
     [TestClass]
-    public class AnonymousMethodsTest
+    public class AnonymousMethodsTests
     {
         delegate T Operator<T>(T lhs, T rhs);
 
@@ -17,7 +17,7 @@ namespace CSharpFeaturesTest.V20.AnonymousMethods
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void AnonymousMethodsTest()
         {
             Operator<int> sum = delegate(int lhs, int rhs)
             {

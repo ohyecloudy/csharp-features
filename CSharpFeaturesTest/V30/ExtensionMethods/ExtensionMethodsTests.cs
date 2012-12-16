@@ -8,7 +8,7 @@ using System;
 namespace CustomExtensions
 {
     // top level에서 정의해야 함
-    // ExtensionMethodsTest 안에서 정의하면 컴파일 에러
+    // ExtensionMethodsTests 안에서 정의하면 컴파일 에러
     public static class MyExtensions
     {
         // this modifier를 사용
@@ -34,10 +34,10 @@ namespace CSharpFeaturesTest.V30.ExtensionMethods
     using CustomExtensions;
 
     [TestClass]
-    public class ExtensionMethodsTest
+    public class ExtensionMethodsTests
     {  
         [TestMethod]
-        public void BasicTest()
+        public void ExtensionMethodsTest()
         {
             string str = "hello world world world";
 

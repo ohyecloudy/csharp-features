@@ -39,10 +39,10 @@ namespace CSharpFeaturesTest.V30.PartialMethodDefinitions
     }
 
     [TestClass]
-    public class PartialMethodDefinitionsTest
+    public class PartialMethodDefinitionsTests
     {
         [TestMethod]
-        public void BasicTest()
+        public void PartialMethodDefinitionsTest()
         {
             int val = 0;
 

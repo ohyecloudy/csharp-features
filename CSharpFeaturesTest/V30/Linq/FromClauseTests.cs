@@ -25,7 +25,7 @@ namespace CSharpFeaturesTest.V30.Linq
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void FromClauseTest()
         {
             Customer[] customers = new Customer[]
             {

@@ -34,7 +34,7 @@ namespace CSharpFeaturesTest.V20.CovarianceAndContravarianceInDelegates
     }
 
     [TestClass]
-    public class CovarianceAndContravarianceInDelegatesTest
+    public class CovarianceAndContravarianceInDelegatesTests
     {
         delegate Mammals NewMammals();
         

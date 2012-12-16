@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace CSharpFeaturesTest.V30.CollectionInitializers
 {
     [TestClass]
-    public class CollectionInitializersTest
+    public class CollectionInitializersTests
     {
         class Cat
         {
@@ -27,7 +27,7 @@ namespace CSharpFeaturesTest.V30.CollectionInitializers
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void CollectionInitializersTest()
         {
             // 연산은 물론 함수도 넣을 수 있다.
             List<int> digits = new List<int> { 0, 1, 2, 1 + 2, 12 / 3, 17 % 6, IntGenerator.Add(2, 4) };

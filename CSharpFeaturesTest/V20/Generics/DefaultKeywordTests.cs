@@ -8,7 +8,7 @@ using System;
 namespace CSharpFeaturesTest.V20.Generics
 {
     [TestClass]
-    public class DefaultKeywordTest
+    public class DefaultKeywordTests
     {
         struct DummyStruct
         {
@@ -32,7 +32,7 @@ namespace CSharpFeaturesTest.V20.Generics
         }
 
         [TestMethod]
-        public void BasicTest()
+        public void DefaultKeywordTest()
         {
             Assert.AreEqual(false, GetDefaultValue<bool>());
             Assert.AreEqual(0, GetDefaultValue<int>());

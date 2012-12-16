@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace CSharpFeaturesTest.V20.Generics
 {
     [TestClass]
-    public class ConstraintsTest
+    public class ConstraintsTests
     {
         struct Dummy
         {
