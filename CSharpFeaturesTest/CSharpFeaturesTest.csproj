@@ -56,6 +56,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="V1X\Operators\OperatorsTests.cs" />
+    <Compile Include="V1X\Types\EnumTests.cs" />
     <Compile Include="V20\AnonymousMethods\AnonymousMethodsTests.cs" />
     <Compile Include="V20\CovarianceAndContravarianceInDelegates\CovarianceAndContravarianceInDelegatesTests.cs" />
     <Compile Include="V20\ExternalAssemblyAlias\ExternalAssemblyAliasTests.cs" />
@@ -110,6 +112,7 @@
       <Name>V20FriendAssmbly</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

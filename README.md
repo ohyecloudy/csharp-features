@@ -2,6 +2,11 @@
 
 C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차근차근 따라잡기** 위해 만든 피처 테스트 프로젝트
 
+## 1.X
+
+* [Operators](CSharpFeaturesTest/V1X/Operators/OperatorsTests.cs)
+* [Types](CSharpFeaturesTest/V1X/Types/EnumTests.cs)
+
 ## 2.0
 
 * [Generics](https://github.com/ohyecloudy/csharp-features/tree/master/CSharpFeaturesTest/V20/Generics)
