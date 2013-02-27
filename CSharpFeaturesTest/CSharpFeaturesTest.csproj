@@ -56,6 +56,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="V1X\Modifiers\DefaultAccessModifierTests.cs" />
     <Compile Include="V1X\Operators\OperatorsTests.cs" />
     <Compile Include="V1X\Types\EnumTests.cs" />
     <Compile Include="V20\AnonymousMethods\AnonymousMethodsTests.cs" />
