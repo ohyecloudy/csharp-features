@@ -5,7 +5,7 @@ C# 버전 업 패기있게 진행 중. 버전별로 **추가되는 피처를 차
 ## 1.X
 
 * [Operators](CSharpFeaturesTest/V1X/Operators/OperatorsTests.cs)
-* [Types](CSharpFeaturesTest/V1X/Types/EnumTests.cs)
+* [Types](CSharpFeaturesTest/V1X/Types/)
 * [Modifiers](CSharpFeaturesTest/V1X/Modifiers/DefaultAccessModifierTests.cs)
 
 ## 2.0

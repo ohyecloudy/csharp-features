@@ -59,6 +59,7 @@
     <Compile Include="V1X\Modifiers\DefaultAccessModifierTests.cs" />
     <Compile Include="V1X\Operators\OperatorsTests.cs" />
     <Compile Include="V1X\Types\EnumTests.cs" />
+    <Compile Include="V1X\Types\StringTests.cs" />
     <Compile Include="V20\AnonymousMethods\AnonymousMethodsTests.cs" />
     <Compile Include="V20\CovarianceAndContravarianceInDelegates\CovarianceAndContravarianceInDelegatesTests.cs" />
     <Compile Include="V20\ExternalAssemblyAlias\ExternalAssemblyAliasTests.cs" />
