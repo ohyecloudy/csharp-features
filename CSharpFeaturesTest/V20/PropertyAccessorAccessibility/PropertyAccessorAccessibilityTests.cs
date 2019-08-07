@@ -2,11 +2,11 @@
 // Restricting Accessor Accessibility (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-US/library/75e8y5dd
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V20.PropertyAccessorAccessibility
 {
-    [TestClass]
+    
     public class PropertyAccessorAccessibilityTests
     {
         class Parent
@@ -50,14 +50,14 @@ namespace CSharpFeaturesTest.V20.PropertyAccessorAccessibility
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void PropertyAccessorAccessibilityTest()
         {
             Parent parent = new Parent();
-            Assert.AreEqual("parent", parent.Name);
+            Assert.Equal("parent", parent.Name);
 
             Child child = new Child();
-            Assert.AreEqual("child", child.Name);
+            Assert.Equal("child", child.Name);
         }
 
         interface IPerson
@@ -97,11 +97,11 @@ namespace CSharpFeaturesTest.V20.PropertyAccessorAccessibility
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void InterfacePropertyTest()
         {
             IPerson person = new DerivedPerson();
-            Assert.AreEqual("derived", person.Name);
+            Assert.Equal("derived", person.Name);
         }
     }
 }

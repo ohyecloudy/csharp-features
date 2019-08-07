@@ -2,14 +2,14 @@
 // Anonymous Types (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/bb397696
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V30.AnonymousTypes
 {
-    [TestClass]
+    
     public class AnonymousTypesTests
     {
-        [TestMethod]
+        [Fact]
         public void AnonymousTypesTest()
         {
             var v = new { Amount = 108, Message = "Hello" };
@@ -17,8 +17,8 @@ namespace CSharpFeaturesTest.V30.AnonymousTypes
             // read only!
             // v.Amount = 110;
 
-            Assert.AreEqual("<>f__AnonymousType0`2", v.GetType().Name, "2는 패러매터 숫자를 가리킨다");
-            Assert.AreEqual("System.Object", v.GetType().BaseType.FullName, "object 상속");
+            Assert.True("<>f__AnonymousType0`2" == v.GetType().Name, "2는 패러매터 숫자를 가리킨다");
+            Assert.True("System.Object" == v.GetType().BaseType.FullName, "object 상속");
         }
     }
 }

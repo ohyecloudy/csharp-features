@@ -2,11 +2,11 @@
 // Static Classes and Static Class Members (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-US/library/79b3xss3
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V20.StaticClasses
 {
-    [TestClass]
+    
     public class StaticClassesTests
     {
         static class Util
@@ -23,14 +23,14 @@ namespace CSharpFeaturesTest.V20.StaticClasses
         // 상속할 수 없다. static class는 sealed 된다.
         // static class DerivedUtil : Util { }
         
-        [TestMethod]
+        [Fact]
         public void StaticClassesTest()
         {
             // 인스턴스를 만들 수 없다.
             // Util util = new Util();
 
-            Assert.AreEqual(5, Util.Number);
-            Assert.AreEqual(10, Util.NumProperty);
+            Assert.Equal(5, Util.Number);
+            Assert.Equal(10, Util.NumProperty);
         }
     }
 }

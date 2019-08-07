@@ -2,7 +2,7 @@
 // Extension Methods (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/bb383977
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 
 namespace CustomExtensions
@@ -33,16 +33,16 @@ namespace CSharpFeaturesTest.V30.ExtensionMethods
     // 별도 namespace로 묶었다면 using을 사용해 mapping
     using CustomExtensions;
 
-    [TestClass]
+    
     public class ExtensionMethodsTests
     {  
-        [TestMethod]
+        [Fact]
         public void ExtensionMethodsTest()
         {
             string str = "hello world world world";
 
-            Assert.AreEqual(4, str.WordCount(), "string에는 WordCount() method가 없지만 위에서 extension method로 추가");
-            Assert.AreEqual("hello world world world!", str.ConcatWith("!"));
+            Assert.True(4 == str.WordCount(), "string에는 WordCount() method가 없지만 위에서 extension method로 추가");
+            Assert.Equal("hello world world world!", str.ConcatWith("!"));
         }
     }
 }

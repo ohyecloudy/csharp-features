@@ -4,11 +4,11 @@
 
 // compile with /unsafe
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V20.FixedSizeBuffers
 {
-    [TestClass]
+    
     public class FixedSizeBuffersTests
     {
         // unsafe block이나 modifier를 붙여줘야 함
@@ -17,7 +17,7 @@ namespace CSharpFeaturesTest.V20.FixedSizeBuffers
             public unsafe fixed int arr[30];
         }
 
-        [TestMethod]
+        [Fact]
         public void FixedSizeBuffersTest()
         {
             FixedSizeBuffer buffer;
@@ -35,7 +35,7 @@ namespace CSharpFeaturesTest.V20.FixedSizeBuffers
                 // unsafe block 혹은 unsafe modifier가 붙은 method에서 접근할 수 있다.
                 unsafe
                 {
-                    Assert.AreEqual(i, buffer.arr[i]);
+                    Assert.Equal(i, buffer.arr[i]);
                 }
             }
         }

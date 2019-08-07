@@ -2,7 +2,7 @@
 // Access Modifiers (C# Reference) - msdn
 // http://msdn.microsoft.com/en-us/library/wxh6fsc7
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Reflection;
 
@@ -26,34 +26,34 @@ namespace CSharpFeaturesTest.V1X.Modifiers
 #pragma warning restore 169
     }
 
-    [TestClass]
+    
     public class DefaultAccessModifierTests
     {
-        [TestMethod]
+        [Fact]
         public void DefaultModifierInNamespaceTest()
         {
             Type classType = typeof(ClassWithDefaultAccessModifier);
 
-            Assert.IsFalse(
+            Assert.False(
                 classType.IsPublic,
                 "public이 아니여야 한다.");
-            Assert.IsFalse(
+            Assert.False(
                 classType.IsVisible,
                 "internal이기 때문에 assembly 밖으로 노출하지 않아야 한다.");
         }
 
-        [TestMethod]
+        [Fact]
         public void DefaultModifierNestedClassTest()
         {
             Type classType = typeof(ClassWithDefaultAccessModifier).
                 GetNestedType("NestedClassWithDefaultAccessModifier", BindingFlags.NonPublic);
 
-            Assert.IsTrue(
+            Assert.True(
                 classType.IsNestedPrivate,
                 "nested class는 default access modifier가 private이여야 한다.");
         }
 
-        [TestMethod]
+        [Fact]
         public void DefaultModifierMethodTest()
         {
             MethodInfo methodInfo = typeof(ClassWithDefaultAccessModifier).
@@ -61,18 +61,18 @@ namespace CSharpFeaturesTest.V1X.Modifiers
                     "MethodWithDefaultAccessModifier",
                     BindingFlags.Instance | BindingFlags.NonPublic);
 
-            Assert.IsTrue(
+            Assert.True(
                 methodInfo.IsPrivate,
                 "method default access modifier는 private이여야 한다.");
         }
 
-        [TestMethod]
+        [Fact]
         public void DefaultModifierFieldTest()
         {
             FieldInfo fieldInfo = typeof(ClassWithDefaultAccessModifier).
                 GetField("_fieldWithDefaultAccessModifier", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            Assert.IsTrue(
+            Assert.True(
                 fieldInfo.IsPrivate,
                 "field default access modifier는 private이여야 한다.");
         }

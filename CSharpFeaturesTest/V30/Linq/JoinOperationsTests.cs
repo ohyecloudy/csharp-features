@@ -14,13 +14,13 @@
 // How to: Perform Custom Join Operations (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/bb882533
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class JoinOperationsTests
     {
         // ValueType인 struct를 사용하면 비었는지 검사가 불가능하므로 (null과 비교)
@@ -54,7 +54,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 new Student { FirstName = "Terry", LastName = "Adams", StudentID = 9913 }
             };
 
-        [TestMethod]
+        [Fact]
         public void InnerJoinTest()
         {
             var query =
@@ -64,16 +64,16 @@ namespace CSharpFeaturesTest.V30.Linq
                 select new { eID = e.EmployeeID, sID = s.StudentID };
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(3, queryResult.Length);
-            Assert.AreEqual(437139, queryResult[0].eID);
-            Assert.AreEqual(9562, queryResult[0].sID);
-            Assert.AreEqual(522459, queryResult[1].eID);
-            Assert.AreEqual(9870, queryResult[1].sID);
-            Assert.AreEqual(522459, queryResult[2].eID);
-            Assert.AreEqual(9913, queryResult[2].sID);
+            Assert.Equal(3, queryResult.Length);
+            Assert.Equal(437139, queryResult[0].eID);
+            Assert.Equal(9562, queryResult[0].sID);
+            Assert.Equal(522459, queryResult[1].eID);
+            Assert.Equal(9870, queryResult[1].sID);
+            Assert.Equal(522459, queryResult[2].eID);
+            Assert.Equal(9913, queryResult[2].sID);
         }
 
-        [TestMethod]
+        [Fact]
         public void CompositeKeyJoinTest()
         {
             var query =
@@ -85,13 +85,13 @@ namespace CSharpFeaturesTest.V30.Linq
                 select new { eID = e.EmployeeID, sID = s.StudentID };
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(2, queryResult.Count());
+            Assert.Equal(2, queryResult.Count());
 
-            Assert.AreEqual(437139, queryResult[0].eID);
-            Assert.AreEqual(522459, queryResult[1].eID);
+            Assert.Equal(437139, queryResult[0].eID);
+            Assert.Equal(522459, queryResult[1].eID);
         }
 
-        [TestMethod]
+        [Fact]
         public void GroupJoinTest()
         {
             // group join은 hierarchical 결과 시퀀스를 만들 수 있다.
@@ -102,22 +102,22 @@ namespace CSharpFeaturesTest.V30.Linq
                 select new { firstName = e.FirstName, studentGroup = prodGroup };
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(4, queryResult.Length);
+            Assert.Equal(4, queryResult.Length);
 
-            Assert.AreEqual("Charlotte", queryResult[0].firstName);
-            Assert.AreEqual(0, queryResult[0].studentGroup.Count());
+            Assert.Equal("Charlotte", queryResult[0].firstName);
+            Assert.Empty(queryResult[0].studentGroup);
 
-            Assert.AreEqual("Magnus", queryResult[1].firstName);
-            Assert.AreEqual(0, queryResult[1].studentGroup.Count());
+            Assert.Equal("Magnus", queryResult[1].firstName);
+            Assert.Empty(queryResult[1].studentGroup);
 
-            Assert.AreEqual("Terry", queryResult[2].firstName);
-            Assert.AreEqual(2, queryResult[2].studentGroup.Count(), "Terry 이름을 가진 student는 2개");
+            Assert.Equal("Terry", queryResult[2].firstName);
+            Assert.True(2 == queryResult[2].studentGroup.Count(), "Terry 이름을 가진 student는 2개");
 
-            Assert.AreEqual("Vernette", queryResult[3].firstName);
-            Assert.AreEqual(1, queryResult[3].studentGroup.Count());
+            Assert.Equal("Vernette", queryResult[3].firstName);
+            Assert.Single(queryResult[3].studentGroup);
         }
 
-        [TestMethod]
+        [Fact]
         public void LeftOuterJoinTest()
         {
             // DefaultIfEmpty()를 사용해 join clause 조건에 부합하지 않은 원소는 default 값을 넣는다.
@@ -130,13 +130,13 @@ namespace CSharpFeaturesTest.V30.Linq
                 select new { eId = e.EmployeeID, sId = (prod == null ? 0 : prod.StudentID) };
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(5, queryResult.Length);
+            Assert.Equal(5, queryResult.Length);
 
-            Assert.AreEqual(204467, queryResult[0].eId, "Charlotte");
-            Assert.AreEqual(0, queryResult[0].sId, "Charlotte은 students에 존재하지 않는다. 그래서 sId가 0 할당");
+            Assert.True(204467 == queryResult[0].eId, "Charlotte");
+            Assert.True(0 == queryResult[0].sId, "Charlotte은 students에 존재하지 않는다. 그래서 sId가 0 할당");
         }
 
-        [TestMethod]
+        [Fact]
         public void NonEquiJoinTest()
         {
             // let으로 임시 시퀀스를 만든 다음 거기에 포함됐는지 여부를 검사해
@@ -149,10 +149,10 @@ namespace CSharpFeaturesTest.V30.Linq
                 select e;
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(2, queryResult.Length);
+            Assert.Equal(2, queryResult.Length);
 
-            Assert.AreEqual("Weiss", queryResult[0].LastName);
-            Assert.AreEqual("Hedland", queryResult[1].LastName);
+            Assert.Equal("Weiss", queryResult[0].LastName);
+            Assert.Equal("Hedland", queryResult[1].LastName);
         }
     }
 }

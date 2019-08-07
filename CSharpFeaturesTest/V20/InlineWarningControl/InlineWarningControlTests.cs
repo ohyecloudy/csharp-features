@@ -2,12 +2,12 @@
 // #pragma warning (C# Reference) - msdn
 // http://msdn.microsoft.com/en-US/library/441722ys
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 
 namespace CSharpFeaturesTest.V20.InlineWarningControl
 {
-    [TestClass]
+    
     public class InlineWarningControlTests
     {
         // 414, 3021 warning을 비활성화

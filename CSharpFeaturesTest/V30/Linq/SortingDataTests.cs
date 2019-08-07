@@ -8,12 +8,12 @@
 // orderby clause (C# Reference) - msdn
 // http://msdn.microsoft.com/en-us/library/bb383982
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class SortingDataTests
     {
         struct Customer
@@ -22,7 +22,7 @@ namespace CSharpFeaturesTest.V30.Linq
             public string Name { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void OrderByClauseTest()
         {
             // OrderBy, OrderByDescending, ThenBy, ThenByDescending는 
@@ -55,11 +55,11 @@ namespace CSharpFeaturesTest.V30.Linq
                  orderby cust.Name descending // ascending이 default
                  select cust).ToArray();
 
-            Assert.AreEqual("z", query[0].Name, "Customer 이름으로 내림차순 정렬이기 때문");
-            Assert.AreEqual("a", query[1].Name);
+            Assert.Equal("z", query[0].Name); // "Customer 이름으로 내림차순 정렬이기 때문"
+            Assert.Equal("a", query[1].Name);
         }
 
-        [TestMethod]
+        [Fact]
         public void ReverseMethodTest()
         {
             int[] nums = new int[] { 1, 2, 3 };
@@ -68,9 +68,9 @@ namespace CSharpFeaturesTest.V30.Linq
                 (from n in nums
                  select n).Reverse().ToArray();
 
-            Assert.AreEqual(3, query[0]);
-            Assert.AreEqual(2, query[1]);
-            Assert.AreEqual(1, query[2]);
+            Assert.Equal(3, query[0]);
+            Assert.Equal(2, query[1]);
+            Assert.Equal(1, query[2]);
         }
     }
 }

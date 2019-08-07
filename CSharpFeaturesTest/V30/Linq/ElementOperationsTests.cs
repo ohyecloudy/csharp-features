@@ -2,74 +2,73 @@
 // Element Operations - msdn
 // http://msdn.microsoft.com/en-us/library/bb546140
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class ElementOperationsTests
     {
         // OrDefault 계열은 몇개만 테스트.
         // 생략: FirstOrDefault(), LastOrDefault(), SingleOrDefault()
 
-        [TestMethod]
+        [Fact]
         public void ElementAtMethodTest()
         {
             IEnumerable<int> nums = Enumerable.Range(0, 5).Select(x => x * x);
 
             for (int i = 0; i < 5; ++i)
             {
-                Assert.AreEqual(Math.Pow(i, 2), nums.ElementAt(i));
+                Assert.Equal(Math.Pow(i, 2), nums.ElementAt(i));
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void ElementAtOrDefaultMethodTest()
         {
-            Assert.AreEqual(1, Enumerable.Range(1, 5).ElementAtOrDefault(0));
-            Assert.AreEqual(default(int), Enumerable.Range(1, 5).ElementAtOrDefault(10));
-            Assert.AreEqual(default(string), Enumerable.Empty<string>().ElementAtOrDefault(0));
+            Assert.Equal(1, Enumerable.Range(1, 5).ElementAtOrDefault(0));
+            Assert.Equal(default(int), Enumerable.Range(1, 5).ElementAtOrDefault(10));
+            Assert.Equal(default(string), Enumerable.Empty<string>().ElementAtOrDefault(0));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException), "소스 시퀀스가 비었을 경우 예외를 던진다.")]
+        [Fact]
         public void FirstMethodExceptionTest()
         {
-            Enumerable.Empty<int>().First();
+            // "소스 시퀀스가 비었을 경우 예외를 던진다."
+            Assert.Throws<InvalidOperationException>(() => Enumerable.Empty<int>().First());
         }
 
-        [TestMethod]
+        [Fact]
         public void FirstMehtodTest()
         {
-            Assert.AreEqual(5, Enumerable.Range(5, 2).First());
+            Assert.Equal(5, Enumerable.Range(5, 2).First());
 
-            Assert.AreEqual(
-                6, 
-                Enumerable.Range(5, 5).First(x => x > 5),
+            Assert.True(
+                6 == Enumerable.Range(5, 5).First(x => x > 5),
                 "condition을 넣을 수 있다");
         }
 
-        [TestMethod]
+        [Fact]
         public void LastMethodTest()
         {
-            Assert.AreEqual(9, Enumerable.Range(5, 5).Last());
-            Assert.AreEqual(6, Enumerable.Range(5, 5).Last(x => x < 7));
+            Assert.Equal(9, Enumerable.Range(5, 5).Last());
+            Assert.Equal(6, Enumerable.Range(5, 5).Last(x => x < 7));
         }
 
-        [TestMethod]
+        [Fact]
         public void SingleMethodTest()
         {
             string[] fruits1 = { "apple" };
 
             string fruit = fruits1.Single();
-            Assert.AreEqual("apple", fruit);
+            Assert.Equal("apple", fruit);
 
             string[] fruits2 = { "orange", "apple" };
             string fruit2 = fruits2.Single(x => x.Length > 5);
-            Assert.AreEqual("orange", fruit2);
+            Assert.Equal("orange", fruit2);
         }
     }
 }

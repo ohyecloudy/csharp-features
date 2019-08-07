@@ -8,14 +8,14 @@
 // into (C# Reference) - msdn
 // http://msdn.microsoft.com/en-us/library/bb311045
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class GroupingDataTests
     {
         struct Customer
@@ -31,7 +31,7 @@ namespace CSharpFeaturesTest.V30.Linq
             public List<int> Scores { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void GroupByStringClauseTest()
         {
             Customer[] customers = new Customer[]
@@ -59,17 +59,17 @@ namespace CSharpFeaturesTest.V30.Linq
                 from cust in customers
                 group cust by cust.City;
 
-            Assert.AreEqual("GroupedEnumerable`3", query.GetType().Name);
-            Assert.IsNotNull(
-                query as IEnumerable<IGrouping<string, Customer>>,
+            Assert.Equal("GroupedEnumerable`2", query.GetType().Name);
+            Assert.True(
+                query as IEnumerable<IGrouping<string, Customer>> != null,
                 "IEnumerable<IGrouping<>> 인터페이스 상속");
 
             var queryResultArray = query.ToArray();
-            Assert.AreEqual("Seoul", queryResultArray[0].Key);
-            Assert.AreEqual("London", queryResultArray[1].Key);
+            Assert.Equal("Seoul", queryResultArray[0].Key);
+            Assert.Equal("London", queryResultArray[1].Key);
 
-            Assert.AreEqual(2, queryResultArray[0].Count());
-            Assert.AreEqual(1, queryResultArray[1].Count());
+            Assert.Equal(2, queryResultArray[0].Count());
+            Assert.True(1 == queryResultArray[1].Count());
 
             // 중첩 foreach로 전체 group을 순회할 수 있다.
             //foreach (var custGroup in query)
@@ -80,7 +80,7 @@ namespace CSharpFeaturesTest.V30.Linq
             //}
         }
 
-        [TestMethod]
+        [Fact]
         public void GroupByBoolClauseTest()
         {
             List<Student> students = new List<Student>()
@@ -99,11 +99,11 @@ namespace CSharpFeaturesTest.V30.Linq
 
             var queryResult = query.ToArray();
 
-            Assert.IsFalse(queryResult[0].Key, "boolean 값을 key로 grouping");
-            Assert.IsTrue(queryResult[1].Key);
+            Assert.False(queryResult[0].Key, "boolean 값을 key로 grouping");
+            Assert.True(queryResult[1].Key);
         }
 
-        [TestMethod]
+        [Fact]
         public void GroupByNumericRangeTest()
         {
             List<Student> students = new List<Student>()
@@ -125,15 +125,15 @@ namespace CSharpFeaturesTest.V30.Linq
                 orderby g.Key
                 select g;
 
-            Assert.IsNotNull(query is IEnumerable<IGrouping<int, Student>>);
+            Assert.True(query is IEnumerable<IGrouping<int, Student>>);
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(6, queryResult[0].Key);
-            Assert.AreEqual(7, queryResult[1].Key);
-            Assert.AreEqual(8, queryResult[2].Key);
+            Assert.Equal(6, queryResult[0].Key);
+            Assert.Equal(7, queryResult[1].Key);
+            Assert.Equal(8, queryResult[2].Key);
         }
 
-        [TestMethod]
+        [Fact]
         public void GroupByCompositeKeysTest()
         {
             Customer[] customers = new Customer[]
@@ -174,17 +174,17 @@ namespace CSharpFeaturesTest.V30.Linq
                 select g;
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(3, queryResult.Length, "name과 city로 grouping. 그래서 4개가 아닌 3개");
+            Assert.Equal(3, queryResult.Length); // "name과 city로 grouping. 그래서 4개가 아닌 3개"
 
-            Assert.AreEqual("London", queryResult[0].Key.city);
-            Assert.AreEqual(1, queryResult[0].Count());
-            Assert.AreEqual("NewYork", queryResult[1].Key.city);
-            Assert.AreEqual(1, queryResult[1].Count());
-            Assert.AreEqual("Seoul", queryResult[2].Key.city);
-            Assert.AreEqual(2, queryResult[2].Count());
+            Assert.Equal("London", queryResult[0].Key.city);
+            Assert.Single(queryResult[0]);
+            Assert.Equal("NewYork", queryResult[1].Key.city);
+            Assert.Single(queryResult[1]);
+            Assert.Equal("Seoul", queryResult[2].Key.city);
+            Assert.Equal(2, queryResult[2].Count());
         }
 
-        [TestMethod]
+        [Fact]
         public void ToLookupMethodTest()
         {
             List<Student> students = new List<Student>()
@@ -201,13 +201,13 @@ namespace CSharpFeaturesTest.V30.Linq
                     s => Convert.ToChar(s.LastName.Substring(0, 1)),
                     s => s.LastName + " " + s.Scores.ToString());
 
-            Assert.AreEqual(4, lookup.Count(), "LastName 첫 글자를 키로 했기 때문에 5개가 아닌 4개");
+            Assert.True(4 == lookup.Count(), "LastName 첫 글자를 키로 했기 때문에 5개가 아닌 4개");
 
             IEnumerator<IGrouping<char, string>> etor = lookup.GetEnumerator();
             etor.MoveNext();
 
-            Assert.AreEqual('O', etor.Current.Key);
-            Assert.AreEqual(2, etor.Current.Count(), "LastName이 Omelchenko, O'Donnell. 이렇게 두개");
+            Assert.Equal('O', etor.Current.Key);
+            Assert.True(2 == etor.Current.Count(), "LastName이 Omelchenko, O'Donnell. 이렇게 두개");
         }
     }
 }

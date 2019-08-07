@@ -1,17 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Xunit;
 
 namespace CSharpFeaturesTest.V1X.Types
 {
-    [TestClass]
+    
     public class StringTests
     {
-        [TestMethod]
+        [Fact]
         public void VerbatimStringLiteralsTest()
         {
-            Assert.AreEqual(
+            // "escape sequences를 처리하지 않아야 한다."
+            Assert.Equal(
                 "c:\\user\\ohyecloudy.txt",
-                @"c:\user\ohyecloudy.txt",
-                "escape sequences를 처리하지 않아야 한다.");
+                @"c:\user\ohyecloudy.txt");
         }
     }
 }

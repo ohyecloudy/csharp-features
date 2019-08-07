@@ -2,11 +2,11 @@
 // Partial Class Definitions (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-US/library/wa80x488
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V20.PartialClasses
 {
-    [TestClass]
+    
     public class PartialClassesTests
     {
         partial class Numbers
@@ -44,14 +44,14 @@ namespace CSharpFeaturesTest.V20.PartialClasses
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void PartialClassesTest()
         {
             Numbers n = new Numbers();
-            Assert.AreEqual(1, n.ReturnOne());
-            Assert.AreEqual(2, n.ReturnTwo());
-            Assert.AreEqual(3, Numbers.Nested.ReturnThree());
-            Assert.AreEqual(4, Numbers.Nested.ReturnFour());
+            Assert.Equal(1, n.ReturnOne());
+            Assert.Equal(2, n.ReturnTwo());
+            Assert.Equal(3, Numbers.Nested.ReturnThree());
+            Assert.Equal(4, Numbers.Nested.ReturnFour());
         }
 
         interface INumbers1
@@ -80,7 +80,7 @@ namespace CSharpFeaturesTest.V20.PartialClasses
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void PartialImplementationInterfaceTest()
         {
             NumbersImpl impl = new NumbersImpl();
@@ -90,10 +90,10 @@ namespace CSharpFeaturesTest.V20.PartialClasses
             // ==>
             // class NumbersImpl : INumbers1, INumbers2
             INumbers1 n1 = (INumbers1)impl;
-            Assert.AreEqual(1, n1.ReturnOne());
+            Assert.Equal(1, n1.ReturnOne());
 
             INumbers2 n2 = (INumbers2)impl;
-            Assert.AreEqual(2, n2.ReturnTwo());                       
+            Assert.Equal(2, n2.ReturnTwo());                       
         }
     }
 }
