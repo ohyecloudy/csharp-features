@@ -2,12 +2,12 @@
 // Named and Optional Arguments (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/dd264739
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 
 namespace CSharpFeaturesTest.V40.NamedAndOptionalArguments
 {
-    [TestClass]
+    
     public class NamedAndOptionalArgumentsTest
     {        
         int Power(int baseNum, int exponent)
@@ -15,13 +15,11 @@ namespace CSharpFeaturesTest.V40.NamedAndOptionalArguments
             return (int)Math.Pow(baseNum, exponent);
         }
 
-        [TestMethod]
+        [Fact]
         public void NamedArgumentsTest()
         {
-            Assert.AreEqual(
-                Power(2, 8),
-                Power(exponent: 8, baseNum: 2),
-                "parameter: argument식으로 named arguments 사용");
+            // "parameter: argument식으로 named arguments 사용"
+            Assert.Equal(Power(2, 8), Power(exponent: 8, baseNum: 2));
         }
 
         void ExampleMethod(
@@ -31,7 +29,7 @@ namespace CSharpFeaturesTest.V40.NamedAndOptionalArguments
         {
         }
 
-        [TestMethod]
+        [Fact]
         public void OptionalArgumentsTest()
         {
             ExampleMethod(5);

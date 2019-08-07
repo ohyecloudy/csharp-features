@@ -6,14 +6,14 @@
 // where clause (C# Reference) - msdn
 // http://msdn.microsoft.com/en-us/library/bb311043
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class FilteringDataTests
     {
         static bool IsEven(int i)
@@ -21,7 +21,7 @@ namespace CSharpFeaturesTest.V30.Linq
             return i % 2 == 0;
         }
 
-        [TestMethod]
+        [Fact]
         public void WhereClauseTest()
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
@@ -31,17 +31,17 @@ namespace CSharpFeaturesTest.V30.Linq
                 where num < 5 && num % 2 == 0
                 select num;
 
-            Assert.AreEqual(3, queryLowNum2.Count(), "0, 2, 4 이렇게 3개");
+            Assert.True(3 == queryLowNum2.Count(), "0, 2, 4 이렇게 3개");
 
             var queryHighEvenNums =
                 from num in numbers
                 where num > 5 && IsEven(num)
                 select num;
 
-            Assert.AreEqual(2, queryHighEvenNums.Count(), "6, 8 이렇게 2개");
+            Assert.True(2 == queryHighEvenNums.Count(), "6, 8 이렇게 2개");
         }
 
-        [TestMethod]
+        [Fact]
         public void OfTypeMethodTest()
         {
             ArrayList fruits = new System.Collections.ArrayList();
@@ -53,7 +53,7 @@ namespace CSharpFeaturesTest.V30.Linq
 
             // type을 지정해 그 type으로 cast 할 수 있는 element만 열거
             IEnumerable<string> query = fruits.OfType<string>();
-            Assert.AreEqual(4, query.Count(), "3.0은 제외한 나머지 4개");
+            Assert.True(4 == query.Count(), "3.0은 제외한 나머지 4개");
         }
     }
 }

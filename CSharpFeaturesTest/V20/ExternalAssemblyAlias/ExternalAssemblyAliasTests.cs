@@ -2,23 +2,23 @@
 // extern (C# Reference) - msdn
 // http://msdn.microsoft.com/en-US/library/e59b22c5
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Runtime.InteropServices; 
 
 namespace CSharpFeaturesTest.V20.ExternalAssemblyAlias
 {
-    [TestClass]
+    
     public class ExternalAssemblyAliasTests
     {
         [DllImport("Shlwapi.dll")]
         static extern bool PathFileExistsA(string path);
                                 
-        [TestMethod]
+        [Fact]
         public void ExternalAssemblyAliasTest()
         {
-            Assert.IsTrue(PathFileExistsA("c:\\"));
-            Assert.IsTrue(PathFileExistsA("c:\\windows"));
-            Assert.IsFalse(PathFileExistsA("z:\\WWEEQAAW123541\\2asdwqeq1\\aaawwertqas.adsa"));
+            Assert.True(PathFileExistsA("c:\\"));
+            Assert.True(PathFileExistsA("c:\\windows"));
+            Assert.False(PathFileExistsA("z:\\WWEEQAAW123541\\2asdwqeq1\\aaawwertqas.adsa"));
         }
     }
 }

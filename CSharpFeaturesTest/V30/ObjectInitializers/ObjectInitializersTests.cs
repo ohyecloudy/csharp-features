@@ -2,11 +2,11 @@
 // Object and Collection Initializers (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/bb384062
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V30.ObjectInitializers
 {
-    [TestClass]
+    
     public class ObjectInitializersTests
     {
         class TargetClass
@@ -16,7 +16,7 @@ namespace CSharpFeaturesTest.V30.ObjectInitializers
             public int Property { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void ObjectInitializersTest()
         {
             // object initializer 사용
@@ -27,12 +27,12 @@ namespace CSharpFeaturesTest.V30.ObjectInitializers
                 Property = 1,
             };
 
-            Assert.AreEqual(5, t.intMember);
-            Assert.AreEqual("ohyecloudy", t.strMember);
-            Assert.AreEqual(1, t.Property);
+            Assert.Equal(5, t.intMember);
+            Assert.Equal("ohyecloudy", t.strMember);
+            Assert.Equal(1, t.Property);
         }
 
-        [TestMethod]
+        [Fact]
         public void AnonymousTypeTest()
         {
             // anonymous type을 생성할 때 사용
@@ -42,8 +42,8 @@ namespace CSharpFeaturesTest.V30.ObjectInitializers
                 Name = "Fluffy",
             };
 
-            Assert.AreEqual(10, pet.Age);
-            Assert.AreEqual("Fluffy", pet.Name);
+            Assert.Equal(10, pet.Age);
+            Assert.Equal("Fluffy", pet.Name);
         }
     }
 }

@@ -2,13 +2,13 @@
 // Concatenation Operations - msdn
 // http://msdn.microsoft.com/en-us/library/bb546141
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class ConcatenationOperationsTests
     {
         class Student
@@ -29,7 +29,7 @@ namespace CSharpFeaturesTest.V30.Linq
             public string City { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void ConcatMethodTest()
         {
             List<Student> students = new List<Student>()
@@ -80,10 +80,10 @@ namespace CSharpFeaturesTest.V30.Linq
                  select t.Last);
 
             var queryResult = query.ToArray();
-            Assert.AreEqual(2, queryResult.Length);
+            Assert.Equal(2, queryResult.Length);
 
-            Assert.AreEqual("Omelchenko", queryResult[0]);
-            Assert.AreEqual("Beebe", queryResult[1]);
+            Assert.Equal("Omelchenko", queryResult[0]);
+            Assert.Equal("Beebe", queryResult[1]);
         }
     }
 }

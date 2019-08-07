@@ -2,14 +2,14 @@
 // Object and Collection Initializers (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/bb384062
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace CSharpFeaturesTest.V30.CollectionInitializers
 {
-    [TestClass]
+    
     public class CollectionInitializersTests
     {
         class Cat
@@ -26,7 +26,7 @@ namespace CSharpFeaturesTest.V30.CollectionInitializers
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void CollectionInitializersTest()
         {
             // 연산은 물론 함수도 넣을 수 있다.
@@ -34,7 +34,7 @@ namespace CSharpFeaturesTest.V30.CollectionInitializers
 
             for (int i = 0; i < digits.Count; ++i)
             {
-                Assert.AreEqual(i, digits[i]);
+                Assert.Equal(i, digits[i]);
             }
 
             List<Cat> cats = new List<Cat>
@@ -45,9 +45,9 @@ namespace CSharpFeaturesTest.V30.CollectionInitializers
                 new Cat() { Name = "Sasha", Age=14 }
             };
 
-            Assert.AreEqual("Sylvester", cats[0].Name);
-            Assert.AreEqual(14, cats[3].Age);
-            Assert.IsNull(cats[2]);    
+            Assert.Equal("Sylvester", cats[0].Name);
+            Assert.Equal(14, cats[3].Age);
+            Assert.Null(cats[2]);    
         }
 
         class FixedIntArray : IEnumerable
@@ -79,7 +79,7 @@ namespace CSharpFeaturesTest.V30.CollectionInitializers
             public readonly int Length = 10;
         }
 
-        [TestMethod]
+        [Fact]
         public void IEnumerableCollectionTest()
         {
             // custom collection도 필요한 사항을 만족하면 collection initializer 사용 가능
@@ -88,7 +88,7 @@ namespace CSharpFeaturesTest.V30.CollectionInitializers
             int idx = 0;
             foreach (var v in arr)
             {
-                Assert.AreEqual(idx, v);
+                Assert.Equal(idx, v);
                 idx++;
             }            
         }

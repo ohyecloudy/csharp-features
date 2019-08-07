@@ -2,7 +2,7 @@
 // Generics and Arrays - msdn
 // http://msdn.microsoft.com/en-us/library/ms228502.aspx
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections.Generic;
 
 namespace CSharpFeaturesTest.V20.Generics
@@ -41,20 +41,20 @@ namespace CSharpFeaturesTest.V20.Generics
         }
     }
 
-    [TestClass]
+    
     public class IListArrayTests
     {
-        [TestMethod]
+        [Fact]
         public void AccumulateTest()
         {
             int[] arr = { 1, 2, 3, 4, 5 };
             List<int> list = new List<int>();
             list.AddRange(arr);
 
-            Assert.AreEqual(
+            // "array 내부 구현은 IList<>. 그래서 IList<> 패러매터에 인자로 그냥 넘길 수 있다."
+            Assert.Equal(
                 ProcessItems.Accumulate(arr, new Calcurator()),
-                ProcessItems.Accumulate(list, new Calcurator()),
-                "array 내부 구현은 IList<>. 그래서 IList<> 패러매터에 인자로 그냥 넘길 수 있다.");
+                ProcessItems.Accumulate(list, new Calcurator()));
         }
     }
 }

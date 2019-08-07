@@ -2,17 +2,17 @@
 // Aggregation Operations - msdn
 // http://msdn.microsoft.com/en-us/library/bb546138
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class AggregationOperationsTests
     {
-        [TestMethod]
+        [Fact]
         public void AggregateMethodTest()
         {
             // Average(), Max(), Min(), Sum()은 helper
@@ -24,7 +24,7 @@ namespace CSharpFeaturesTest.V30.Linq
 
                 string reversed = words.Aggregate(
                     (workingSentence, next) => next + " " + workingSentence);
-                Assert.AreEqual(
+                Assert.Equal(
                     "dog lazy the over jumps fox brown quick the",
                     reversed);
             }
@@ -33,7 +33,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 int[] ints = { 4, 8, 8, 3, 9, 0, 7, 8, 2 };
                 const int SEED = 0;
 
-                Assert.AreEqual(
+                Assert.Equal(
                     6,
                     ints.Aggregate(SEED, (total, next) => next % 2 == 0 ? total + 1 : total));
             }
@@ -47,47 +47,47 @@ namespace CSharpFeaturesTest.V30.Linq
                         SEED,
                         (longest, next) => next.Length > longest.Length ? next : longest,
                         fruit => fruit.ToUpper()); // result selector
-                Assert.AreEqual("PASSIONFRUIT", longestName);
+                Assert.Equal("PASSIONFRUIT", longestName);
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void AverageMethodTest()
         {
             // Decimal, Double, Int32, Int64, Single 가능
-            Assert.AreEqual(
+            Assert.Equal(
                 5.5,
                 Enumerable.Range(1, 10).Average());
 
             int?[] nums = { 1, 2, 3, null };
-            Assert.AreEqual(
+            // "null 원소는 아예 제외. / 4 가 아님을 주목"
+            Assert.Equal(
                 (1 + 2 + 3) / 3,
-                nums.Average(),
-                "null 원소는 아예 제외. / 4 가 아님을 주목");
+                nums.Average());
 
             string[] fruits = { "apple", "banana", "mango", "orange", "passionfruit", "grape" };
-            Assert.AreEqual(
+            Assert.Equal(
                 6.5,
                 fruits.Average(s => s.Length));
         }
 
-        [TestMethod]
+        [Fact]
         public void CountMethodTest()
         {
             IEnumerable<string> fruits = new string[] { "apple", "banana", "mango", "orange", "passionfruit", "grape" };
-            Assert.AreEqual(6, fruits.Count());
+            Assert.Equal(6, fruits.Count());
 
             Func<string, bool> predicate = (string x) => x.Length >= 6;
-            Assert.AreEqual(3, fruits.Count(predicate));
+            Assert.Equal(3, fruits.Count(predicate));
         }
 
-        [TestMethod]
+        [Fact]
         public void LongCountMethodTest()
         {
             // Count와 return 타입만 다름
 
             IEnumerable<string> fruits = new string[] {};
-            Assert.AreEqual("Int64", fruits.LongCount().GetType().Name);
+            Assert.Equal("Int64", fruits.LongCount().GetType().Name);
         }
     }
 }

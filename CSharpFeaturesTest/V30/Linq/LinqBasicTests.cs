@@ -6,17 +6,17 @@
 // How to: Query an ArrayList with LINQ - msdn
 // http://msdn.microsoft.com/en-us/library/bb397937
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class LinqBasicTests
     {
-        [TestMethod]
+        [Fact]
         public void LinqBasicTest()
         {
             // 1. data source
@@ -28,31 +28,31 @@ namespace CSharpFeaturesTest.V30.Linq
                 where (num % 2) == 0
                 select num;
 
-            Assert.AreEqual("WhereArrayIterator`1", numQuery.GetType().Name);
+            Assert.Equal("WhereArrayIterator`1", numQuery.GetType().Name);
             
             // 3. query execution
-            Assert.AreEqual(4, numQuery.Count());
+            Assert.Equal(4, numQuery.Count());
 
             int result = 0;
             foreach (int num in numQuery)
             {
-                Assert.AreEqual(result, num);
+                Assert.Equal(result, num);
                 result += 2;
             }
 
             {
                 IEnumerator<int> enumerator = numQuery.GetEnumerator();
                 enumerator.MoveNext();
-                Assert.AreEqual(0, enumerator.Current);
+                Assert.Equal(0, enumerator.Current);
 
                 enumerator.MoveNext();
-                Assert.AreEqual(2, enumerator.Current);
+                Assert.Equal(2, enumerator.Current);
                 
                 enumerator.MoveNext();
-                Assert.AreEqual(4, enumerator.Current);
+                Assert.Equal(4, enumerator.Current);
 
                 enumerator.MoveNext();
-                Assert.AreEqual(6, enumerator.Current);
+                Assert.Equal(6, enumerator.Current);
             }
         }
 
@@ -84,7 +84,7 @@ namespace CSharpFeaturesTest.V30.Linq
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void CustomCollectionTest()
         {           
             CustomCollection coll = new CustomCollection();
@@ -97,12 +97,12 @@ namespace CSharpFeaturesTest.V30.Linq
             int result = 1;
             foreach (int n in query)
             {
-                Assert.AreEqual(result, n);
+                Assert.Equal(result, n);
                 result += 2;
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void CustomNonGenericCollectionTest()
         {
             CustomCollection2 coll = new CustomCollection2();
@@ -117,7 +117,7 @@ namespace CSharpFeaturesTest.V30.Linq
             int result = 1;
             foreach (int n in query)
             {
-                Assert.AreEqual(result, n);
+                Assert.Equal(result, n);
                 result += 2;
             }
         }

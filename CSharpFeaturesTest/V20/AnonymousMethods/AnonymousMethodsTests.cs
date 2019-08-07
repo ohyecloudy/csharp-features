@@ -2,11 +2,10 @@
 // Anonymous Methods (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-US/library/0yw3tz5k
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V20.AnonymousMethods
 {
-    [TestClass]
     public class AnonymousMethodsTests
     {
         delegate T Operator<T>(T lhs, T rhs);
@@ -16,7 +15,7 @@ namespace CSharpFeaturesTest.V20.AnonymousMethods
             return op(lhs, rhs);
         }
 
-        [TestMethod]
+        [Fact]
         public void AnonymousMethodsTest()
         {
             Operator<int> sum = delegate(int lhs, int rhs)
@@ -24,9 +23,9 @@ namespace CSharpFeaturesTest.V20.AnonymousMethods
                 return lhs + rhs;
             };
 
-            Assert.AreEqual(2 + 3, sum(2, 3));
+            Assert.Equal(2 + 3, sum(2, 3));
 
-            Assert.AreEqual(
+            Assert.Equal(
                 2 + 3,
                 ExecuteOperator(
                     delegate(int lhs, int rhs) { return lhs + rhs; },
@@ -35,7 +34,7 @@ namespace CSharpFeaturesTest.V20.AnonymousMethods
 
         delegate int Del();
 
-        [TestMethod]
+        [Fact]
         public void CapturedOrOuterVariablesTest()
         {
             int n = 0;
@@ -45,11 +44,11 @@ namespace CSharpFeaturesTest.V20.AnonymousMethods
 
             Del del = delegate() { return ++n; };
 
-            Assert.AreEqual(1, del());
-            Assert.AreEqual(1, n, "n은 delegate에서 capture. n을 delegate 내부에서 증가했기 때문에 n이 1이다");
-            Assert.AreEqual(2, del());
-            Assert.AreEqual(3, del());
-            Assert.AreEqual(3, n);
+            Assert.Equal(1, del());
+            Assert.True(1 == n, "n은 delegate에서 capture. n을 delegate 내부에서 증가했기 때문에 n이 1이다");
+            Assert.Equal(2, del());
+            Assert.Equal(3, del());
+            Assert.Equal(3, n);
         }
     }
 }

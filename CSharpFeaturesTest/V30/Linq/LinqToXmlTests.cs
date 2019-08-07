@@ -2,7 +2,7 @@
 // LINQ to XML - msdn
 // http://msdn.microsoft.com/en-us/library/bb387098
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,10 +14,10 @@ using System.Xml.XPath;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class LinqToXmlTests
     {
-        [TestMethod]
+        [Fact]
         public void FunctionalConstructionTest()
         {
             XElement srcTree = new XElement("Root",
@@ -34,12 +34,12 @@ namespace CSharpFeaturesTest.V30.Linq
                  where (int)el > 2
                  select el));
 
-            Assert.AreEqual(
+            Assert.Equal(
                 "<Root><Child>1</Child><Child>2</Child><Element>3</Element><Element>4</Element><Element>5</Element></Root>",
                 xmlTree.ToString(SaveOptions.DisableFormatting));
         }
 
-        [TestMethod]
+        [Fact]
         public void ValidateUsingXsdTest()
         {
             string xsdMarkup =
@@ -68,7 +68,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 {
                     errors = true;
                 });
-            Assert.IsFalse(errors);
+            Assert.False(errors);
 
             XDocument doc2 = new XDocument(
                 new XElement("Root",
@@ -81,7 +81,7 @@ namespace CSharpFeaturesTest.V30.Linq
                     errors = true;
                 });
 
-            Assert.IsTrue(errors, "Child1, 2만 element로 가질 수 있게 XSD에 정의");
+            Assert.True(errors, "Child1, 2만 element로 가질 수 있게 XSD에 정의");
         }
 
         XElement CreateTestXml()
@@ -125,7 +125,7 @@ namespace CSharpFeaturesTest.V30.Linq
             return XElement.Parse(rawXml);
         }
 
-        [TestMethod]
+        [Fact]
         public void ElementsCollectionTest()
         {
             XElement po = CreateTestXml();
@@ -137,28 +137,27 @@ namespace CSharpFeaturesTest.V30.Linq
             IEnumerator<XElement> etor = children.GetEnumerator();
 
             etor.MoveNext();
-            Assert.AreEqual("Address", etor.Current.Name);
+            Assert.Equal("Address", etor.Current.Name);
 
             etor.MoveNext();
-            Assert.AreEqual("Address", etor.Current.Name);
+            Assert.Equal("Address", etor.Current.Name);
 
             etor.MoveNext();
-            Assert.AreEqual("DeliveryNotes", etor.Current.Name);
+            Assert.Equal("DeliveryNotes", etor.Current.Name);
 
             etor.MoveNext();
-            Assert.AreEqual("Items", etor.Current.Name);
+            Assert.Equal("Items", etor.Current.Name);
 
-            Assert.IsFalse(etor.MoveNext());
+            Assert.False(etor.MoveNext());
         }
 
-        [TestMethod]
+        [Fact]
         public void ElementValueTest()
         {
             XElement po = CreateTestXml();
-            Assert.AreEqual("Ellen Adams", (string)po.Element("Address").Element("Name"));
-            Assert.AreEqual(
-                10999,
-                (int)po.Element("Address").Element("Zip"),
+            Assert.Equal("Ellen Adams", (string)po.Element("Address").Element("Name"));
+            Assert.True(
+                10999 == (int)po.Element("Address").Element("Zip"),
                 "XElement는 cast operator를 구현했다. Value property는 string. 바로 cast해서 쓰는게 편리");
 
             // cast 지원 타입
@@ -167,21 +166,20 @@ namespace CSharpFeaturesTest.V30.Linq
             // DateTime, DateTime?, TimeSpan, TimeSpan?, GUID, GUID?.
 
             // Element는 child element가 여러개일때, 첫번째 element를 리턴
-            Assert.AreEqual(
-                null,
-                (int?)po.Element("Address").Element("ohyecloudy"),
-                "nullable type으로 캐스팅하는 게 안전하다. Element가 없는 경우에도 대처");
+            // "nullable type으로 캐스팅하는 게 안전하다. Element가 없는 경우에도 대처"
+            Assert.Null(
+                (int?)po.Element("Address").Element("ohyecloudy"));
         }
         
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), "ValueType으로 캐스팅하면 Element가 없는 경우 예외를 던진다")]
+        [Fact]
         public void ElementValueExceptionTest()
         {
             XElement po = CreateTestXml();
-            int invalid = (int)po.Element("Address").Element("ohyecloudy");
+            // "ValueType으로 캐스팅하면 Element가 없는 경우 예외를 던진다"
+            Assert.Throws<ArgumentNullException>(() => (int)po.Element("Address").Element("ohyecloudy"));
         }
 
-        [TestMethod]
+        [Fact]
         public void FilterOnElementNamesTest()
         {
             XElement po = CreateTestXml();
@@ -190,23 +188,21 @@ namespace CSharpFeaturesTest.V30.Linq
                  select el).GetEnumerator();
 
             etor.MoveNext();
-            Assert.AreEqual(
+            // "child가 아니라 자손임을 명심. leaf까지 검색해서 동일한 이름을 가진 Element를 소스 시퀀스에 넣는다."
+            Assert.Equal(
                 "Lawnmower",
-                (string)etor.Current,
-                "child가 아니라 자손임을 명심. leaf까지 검색해서 동일한 이름을 가진 Element를 소스 시퀀스에 넣는다.");
+                (string)etor.Current);
 
             etor.MoveNext();
-            Assert.AreEqual("Baby Monitor", (string)etor.Current);
+            Assert.Equal("Baby Monitor", (string)etor.Current);
 
-            Assert.IsFalse(etor.MoveNext());
+            Assert.False(etor.MoveNext());
 
-            Assert.AreEqual(
-                0,
-                (from el in po.Elements("ProductName") select el).Count(),
-                "Elements()는 자식만 순회");
+            // "Elements()는 자식만 순회"
+            Assert.Empty((from el in po.Elements("ProductName") select el));
         }
 
-        [TestMethod]
+        [Fact]
         public void ChainAxisMethodCallsTest()
         {
             XElement po = CreateTestXml();
@@ -219,10 +215,10 @@ namespace CSharpFeaturesTest.V30.Linq
                 select (string)el;
 
             string[] expected = { "Ellen Adams", "Tai Yee" };
-            CollectionAssert.AreEqual(expected, names.ToArray());
+            Assert.Equal(expected, names.ToArray());
         }
 
-        [TestMethod]
+        [Fact]
         public void AttributesCollectionTest()
         {
             XElement val =
@@ -243,18 +239,18 @@ namespace CSharpFeaturesTest.V30.Linq
 
             IEnumerator<XAttribute> etor = attrs.GetEnumerator();
             etor.MoveNext();
-            Assert.AreEqual("ID", etor.Current.Name);
-            Assert.AreEqual(1243, (int)etor.Current);
+            Assert.Equal("ID", etor.Current.Name);
+            Assert.Equal(1243, (int)etor.Current);
 
             // 2개 더 있어.
             etor.MoveNext();
             etor.MoveNext();
-            Assert.IsFalse(etor.MoveNext());
+            Assert.False(etor.MoveNext());
 
-            Assert.AreEqual(100, (int)val, "XAttribute 뒤에 온 100은 value로 저장");
+            Assert.True(100 == (int)val, "XAttribute 뒤에 온 100은 value로 저장");
         }
 
-        [TestMethod]
+        [Fact]
         public void DictionaryToXmlTest()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -267,12 +263,12 @@ namespace CSharpFeaturesTest.V30.Linq
                 new XElement("Root",
                     from keyValue in dict
                     select new XElement(keyValue.Key, keyValue.Value));
-            Assert.AreEqual(
+            Assert.Equal(
                 "<Root><Child1>Value1</Child1><Child2>Value2</Child2><Child3>Value3</Child3><Child4>Value4</Child4></Root>",
                 root.ToString(SaveOptions.DisableFormatting));
         }
 
-        [TestMethod]
+        [Fact]
         public void UsingXPathTest()
         {
             XElement root = new XElement("Root",
@@ -285,7 +281,7 @@ namespace CSharpFeaturesTest.V30.Linq
             );
 
             IEnumerable<XElement> list = root.XPathSelectElements("./Child2");
-            Assert.AreEqual(3, list.Count());
+            Assert.Equal(3, list.Count());
         }
     }
 }

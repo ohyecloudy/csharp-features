@@ -4,13 +4,13 @@
 // from clause (C# Reference) - msdn
 // http://msdn.microsoft.com/en-us/library/bb383978
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class FromClauseTests
     {
         struct Customer
@@ -24,7 +24,7 @@ namespace CSharpFeaturesTest.V30.Linq
             public List<int> Scores { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void FromClauseTest()
         {
             Customer[] customers = new Customer[]
@@ -50,10 +50,10 @@ namespace CSharpFeaturesTest.V30.Linq
                 select c;
 
             Customer[] resultCustomers = allCustomers.ToArray();
-            CollectionAssert.AreEqual(customers, resultCustomers);
+            Assert.Equal(customers, resultCustomers);
         }
 
-        [TestMethod]
+        [Fact]
         public void CompoundFromClauseTest()
         {
             List<Student> students = new List<Student>()
@@ -71,10 +71,10 @@ namespace CSharpFeaturesTest.V30.Linq
                 where score > 90
                 select new { Last = student.LastName, score };
 
-            Assert.AreEqual(5, scoreQuery.Count(), "97, 91, 94, 97, 91 이렇게 5개");
+            Assert.True(5 == scoreQuery.Count(), "97, 91, 94, 97, 91 이렇게 5개");
         }
 
-        [TestMethod]
+        [Fact]
         public void MultipleFromClauseTest()
         {
             char[] upperCase = { 'A', 'B', 'C' };
@@ -86,7 +86,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 from lower in lowerCase
                 select new { upper, lower };
 
-            Assert.AreEqual(
+            Assert.Equal(
                 upperCase.Length * lowerCase.Length,
                 joinQuery1.Count());
 
@@ -96,7 +96,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 from upper in upperCase
                 select new { lower, upper };
 
-            Assert.AreEqual(
+            Assert.Equal(
                 (lowerCase.Length - 1) * upperCase.Length,
                 joinQuery2.Count());
         }

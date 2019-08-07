@@ -7,7 +7,7 @@
 // -> 편해
 // 지원을 안 한다면 껍데기만 만들던가, 구현했는지 여부를 확인하고 호출하는 절차를 거쳐야 한다.
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V30.PartialMethodDefinitions
 {
@@ -38,27 +38,27 @@ namespace CSharpFeaturesTest.V30.PartialMethodDefinitions
         public void CallReturnTenWithoutImpl(ref int outVal) { ReturnTenWithoutImpl(ref outVal); }
     }
 
-    [TestClass]
+    
     public class PartialMethodDefinitionsTests
     {
-        [TestMethod]
+        [Fact]
         public void PartialMethodDefinitionsTest()
         {
             int val = 0;
 
             PartialMethodImpl pm = new PartialMethodImpl();
             pm.CallReturnFive(ref val);
-            Assert.AreEqual(5, val);
+            Assert.Equal(5, val);
 
             pm.CallReturnDefaultValue(ref val);
-            Assert.AreEqual(default(int), val);
+            Assert.Equal(default(int), val);
 
             PartialMethodImpl.CallStaticReturnFive(ref val);
-            Assert.AreEqual(5, val);
+            Assert.Equal(5, val);
 
             val = 1002;
             pm.CallReturnTenWithoutImpl(ref val);
-            Assert.AreEqual(1002, val, "ReturnTenWithoutImpl() 이 함수는 구현부가 없다. 그래서 컴파일러가 제거. 1002 그대로 있다.");
+            Assert.True(1002 == val, "ReturnTenWithoutImpl() 이 함수는 구현부가 없다. 그래서 컴파일러가 제거. 1002 그대로 있다.");
         }
     }
 }

@@ -2,14 +2,14 @@
 // Equality Operations - msdn
 // http://msdn.microsoft.com/en-us/library/bb546160
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class EqualityOperationsTests
     {
         class Pet
@@ -24,7 +24,7 @@ namespace CSharpFeaturesTest.V30.Linq
             public int Age { get; set; }
         }
 
-        [TestMethod]
+        [Fact]
         public void SequenceEqualMethodTest()
         {
             {
@@ -34,7 +34,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 List<Pet> pets1 = new List<Pet> { pet1, pet2 };
                 List<Pet> pets2 = new List<Pet> { pet1, pet2 };
 
-                Assert.IsTrue(pets1.SequenceEqual(pets2));
+                Assert.True(pets1.SequenceEqual(pets2));
 
                 List<Pet> pets3 = new List<Pet>
                 {
@@ -42,7 +42,7 @@ namespace CSharpFeaturesTest.V30.Linq
                     new Pet { Name = "Peanut", Age = 8 },
                 };
 
-                Assert.IsFalse(
+                Assert.False(
                     pets1.SequenceEqual(pets3),
                     "identical data이지만 다른 reference이기 때문에 false를 리턴.");
             }
@@ -60,7 +60,7 @@ namespace CSharpFeaturesTest.V30.Linq
                     new SPet { Name = "Peanut", Age = 8 },
                 };
 
-                Assert.IsTrue(
+                Assert.True(
                     pets1.SequenceEqual(pets2),
                     "ValueType인 struct는 실제 data를 비교한다. 그래서 true");
             }
@@ -81,7 +81,7 @@ namespace CSharpFeaturesTest.V30.Linq
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void SequenceEqualMethodWithIEquatableTest()
         {
             Product[] storeA = 
@@ -96,7 +96,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 new Product { Name = "orange", Code = 4 },
             };
 
-            Assert.IsTrue(
+            Assert.True(
                 storeA.SequenceEqual(storeB),
                 "IEquatable 인터페이스를 구현해서 data를 비교하게 했다.");
         }

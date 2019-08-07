@@ -6,11 +6,11 @@
 // in은 contravariance
 // 그래서 out은 return 타입, in 은 input 타입으로만 사용 가능
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V40.GenericCovarianceAndContravariance
 {
-    [TestClass]
+    
     public class VarianceInDelegatesTests
     {
         class BaseClass
@@ -22,7 +22,7 @@ namespace CSharpFeaturesTest.V40.GenericCovarianceAndContravariance
 
         public delegate T ConvarianceDelegate<out T>();
 
-        [TestMethod]
+        [Fact]
         public void ConvarianceTest()
         {
             ConvarianceDelegate<DerivedClass> d = () => new DerivedClass();
@@ -34,7 +34,7 @@ namespace CSharpFeaturesTest.V40.GenericCovarianceAndContravariance
 
         public delegate void ContravarianceDelegate<in T>(T input);
 
-        [TestMethod]
+        [Fact]
         public void ContravarianceTest()
         {
             ContravarianceDelegate<BaseClass> b = input => input.Update();
