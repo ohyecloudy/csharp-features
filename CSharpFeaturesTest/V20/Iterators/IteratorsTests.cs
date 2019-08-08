@@ -2,13 +2,13 @@
 // Iterators (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/dscyy5s0(v=vs.80).aspx
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections;
 using System.Collections.Generic;
 
 namespace CSharpFeaturesTest.V20.Iterators
 {
-    [TestClass]
+    
     public class IteratorsTests
     {
         class DayOfTheWeek : IEnumerable
@@ -26,7 +26,7 @@ namespace CSharpFeaturesTest.V20.Iterators
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void IteratorsTest()
         {
             List<string> l = new List<string>();
@@ -37,14 +37,14 @@ namespace CSharpFeaturesTest.V20.Iterators
                 l.Add(day);
             }
 
-            Assert.AreEqual(7, l.Count);
-            Assert.AreEqual("Sun", l[0]);
-            Assert.AreEqual("Mon", l[1]);
-            Assert.AreEqual("Tue", l[2]);
-            Assert.AreEqual("Wed", l[3]);
-            Assert.AreEqual("Thr", l[4]);
-            Assert.AreEqual("Fri", l[5]);
-            Assert.AreEqual("Sat", l[6]);
+            Assert.Equal(7, l.Count);
+            Assert.Equal("Sun", l[0]);
+            Assert.Equal("Mon", l[1]);
+            Assert.Equal("Tue", l[2]);
+            Assert.Equal("Wed", l[3]);
+            Assert.Equal("Thr", l[4]);
+            Assert.Equal("Fri", l[5]);
+            Assert.Equal("Sat", l[6]);
         }
 
         class CustomArray<T> : IEnumerable<T>
@@ -77,7 +77,7 @@ namespace CSharpFeaturesTest.V20.Iterators
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void GenericIteratorTest()
         {
             CustomArray<int> arr = new CustomArray<int>();
@@ -89,12 +89,12 @@ namespace CSharpFeaturesTest.V20.Iterators
             int idx = 0;
             foreach (int i in arr)
             {
-                Assert.AreEqual(idx * 2, i);
+                Assert.Equal(idx * 2, i);
                 idx++;
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void IEnumerableReturnTest()
         {
             CustomArray<int> arr = new CustomArray<int>();
@@ -106,7 +106,7 @@ namespace CSharpFeaturesTest.V20.Iterators
             int val = 9;
             foreach (int i in arr.ReverseIterator())
             {
-                Assert.AreEqual(val, i);
+                Assert.Equal(val, i);
                 --val;
             }
         }
@@ -120,14 +120,14 @@ namespace CSharpFeaturesTest.V20.Iterators
             yield return 5;
         }
 
-        [TestMethod]
+        [Fact]
         public void MultipleYieldReturnTest()
         {
             int[] expectedArr = { 0, 3, 5 };
             int idx = 0;
             foreach (int i in SomeNumbers())
             {
-                Assert.AreEqual(expectedArr[idx], i);
+                Assert.Equal(expectedArr[idx], i);
                 idx++;
             }
         }

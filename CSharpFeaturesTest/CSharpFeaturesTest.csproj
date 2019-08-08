@@ -1,145 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0C5117E8-5741-455A-9CD4-ACD5FCBC517A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpFeaturesTest</RootNamespace>
-    <AssemblyName>CSharpFeaturesTest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
-    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>False</IsCodedUITest>
-    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
-    <Reference Include="System.XML" />
-    <Reference Include="System.Xml.Linq" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.6.0-preview7.19362.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
   </ItemGroup>
-  <Choose>
-    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-      </ItemGroup>
-    </When>
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="V1X\Modifiers\DefaultAccessModifierTests.cs" />
-    <Compile Include="V1X\Operators\OperatorsTests.cs" />
-    <Compile Include="V1X\Types\EnumTests.cs" />
-    <Compile Include="V1X\Types\StringTests.cs" />
-    <Compile Include="V20\AnonymousMethods\AnonymousMethodsTests.cs" />
-    <Compile Include="V20\CovarianceAndContravarianceInDelegates\CovarianceAndContravarianceInDelegatesTests.cs" />
-    <Compile Include="V20\ExternalAssemblyAlias\ExternalAssemblyAliasTests.cs" />
-    <Compile Include="V20\FixedSizeBuffers\FixedSizeBuffersTests.cs" />
-    <Compile Include="V20\FriendAssemblies\FriendAssembliesTests.cs" />
-    <Compile Include="V20\Generics\ConstraintsTests.cs" />
-    <Compile Include="V20\Generics\DefaultKeywordTests.cs" />
-    <Compile Include="V20\Generics\IListArrayTests.cs" />
-    <Compile Include="V20\Generics\ReflectionTests.cs" />
-    <Compile Include="V20\InlineWarningControl\InlineWarningControlTests.cs" />
-    <Compile Include="V20\Iterators\IteratorsTests.cs" />
-    <Compile Include="V20\NamespaceAliasQualifier\NamespaceAliasQualifierTests.cs" />
-    <Compile Include="V20\NullableTypes\NullableTypesTests.cs" />
-    <Compile Include="V20\PartialClasses\PartialClassesTests.cs" />
-    <Compile Include="V20\PropertyAccessorAccessibility\PropertyAccessorAccessibilityTests.cs" />
-    <Compile Include="V20\StaticClasses\StaticClassesTests.cs" />
-    <Compile Include="V30\AnonymousTypes\AnonymousTypesTests.cs" />
-    <Compile Include="V30\AutoImplementedProperties\AutoImplementedPropertiesTests.cs" />
-    <Compile Include="V30\CollectionInitializers\CollectionInitializersTests.cs" />
-    <Compile Include="V30\ExtensionMethods\ExtensionMethodsTests.cs" />
-    <Compile Include="V30\ImplicitlyTypedLocalVariablesAndArrays\ImplicitlyTypedLocalVariablesAndArraysTests.cs" />
-    <Compile Include="V30\LambdaExpressions\LambdaExpressionsTests.cs" />
-    <Compile Include="V30\Linq\AggregationOperationsTests.cs" />
-    <Compile Include="V30\Linq\ConcatenationOperationsTests.cs" />
-    <Compile Include="V30\Linq\ConvertingDataTypesTests.cs" />
-    <Compile Include="V30\Linq\ElementOperationsTests.cs" />
-    <Compile Include="V30\Linq\EqualityOperationsTests.cs" />
-    <Compile Include="V30\Linq\FilteringDataTests.cs" />
-    <Compile Include="V30\Linq\FromClauseTests.cs" />
-    <Compile Include="V30\Linq\GenerationOperationsTests.cs" />
-    <Compile Include="V30\Linq\GroupingDataTests.cs" />
-    <Compile Include="V30\Linq\JoinOperationsTests.cs" />
-    <Compile Include="V30\Linq\LetClauseTests.cs" />
-    <Compile Include="V30\Linq\LinqBasicTests.cs" />
-    <Compile Include="V30\Linq\LinqToXmlTests.cs" />
-    <Compile Include="V30\Linq\PartitioningDataTests.cs" />
-    <Compile Include="V30\Linq\ProjectionOperationsTests.cs" />
-    <Compile Include="V30\Linq\QuantifierOperationsTests.cs" />
-    <Compile Include="V30\Linq\SetOperationsTests.cs" />
-    <Compile Include="V30\Linq\SortingDataTests.cs" />
-    <Compile Include="V30\ObjectInitializers\ObjectInitializersTests.cs" />
-    <Compile Include="V30\PartialMethodDefinitions\PartialMethodDefinitionsTests.cs" />
-    <Compile Include="V30\PartialMethodDefinitions\PartialMethodImpl.cs" />
-    <Compile Include="V40\DynamicSupport\DynamicSupportTests.cs" />
-    <Compile Include="V40\GenericCovarianceAndContravariance\VarianceInDelegatesTests.cs" />
-    <Compile Include="V40\GenericCovarianceAndContravariance\VariantGenericInterfacesTests.cs" />
-    <Compile Include="V40\NamedAndOptionalArguments\NamedAndOptionalArgumentsTests.cs" />
+    <ProjectReference Include="..\V20FriendAssmbly\V20FriendAssmbly.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\V20FriendAssmbly\V20FriendAssmbly.csproj">
-      <Project>{1bf335bd-a46f-40c4-9338-28dcb4cb403c}</Project>
-      <Name>V20FriendAssmbly</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup />
-  <Choose>
-    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
-      <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
-  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

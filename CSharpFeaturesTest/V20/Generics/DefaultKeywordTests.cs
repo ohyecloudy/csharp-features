@@ -2,12 +2,12 @@
 // default Keyword in Generic Code - msdn
 // http://msdn.microsoft.com/en-us/library/xwth0h0d.aspx
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 
 namespace CSharpFeaturesTest.V20.Generics
 {
-    [TestClass]
+    
     public class DefaultKeywordTests
     {
         struct DummyStruct
@@ -31,24 +31,24 @@ namespace CSharpFeaturesTest.V20.Generics
             return default(T);
         }
 
-        [TestMethod]
+        [Fact]
         public void DefaultKeywordTest()
         {
-            Assert.AreEqual(false, GetDefaultValue<bool>());
-            Assert.AreEqual(0, GetDefaultValue<int>());
-            Assert.AreEqual(0.0f, GetDefaultValue<float>());
-            Assert.AreEqual(null, GetDefaultValue<string>(), "reference type은 null");
+            Assert.False(GetDefaultValue<bool>());
+            Assert.Equal(0, GetDefaultValue<int>());
+            Assert.Equal(0.0f, GetDefaultValue<float>());
+            Assert.True(null == GetDefaultValue<string>(), "reference type은 null");
 
             // struct인 경우 member들마다 default() 리턴값으로 할당
             DummyStruct s = GetDefaultValue<DummyStruct>();
-            Assert.AreEqual(false, s.boolMember);
-            Assert.AreEqual(0, s.intMember);
-            Assert.AreEqual(0.0f, s.floatMember);
-            Assert.AreEqual(null, s.referenceMember);
+            Assert.False(s.boolMember);
+            Assert.Equal(0, s.intMember);
+            Assert.Equal(0.0f, s.floatMember);
+            Assert.Null(s.referenceMember);
 
             // Nullable도 똑같은 규칙 적용
             Nullable<int> defaultNullable = GetDefaultValue<Nullable<int>>();
-            Assert.AreEqual(false, defaultNullable.HasValue);
+            Assert.False(defaultNullable.HasValue);
         }
     }
 }

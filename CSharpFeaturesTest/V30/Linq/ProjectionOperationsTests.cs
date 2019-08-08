@@ -2,16 +2,16 @@
 // Projection Operations - msdn
 // http://msdn.microsoft.com/en-us/library/bb546168.aspx
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class ProjectionOperationsTests
     {
-        [TestMethod]
+        [Fact]
         public void SelectClauseTest()
         {
             List<string> words = new List<string>() { "an", "apple", "a", "day" };
@@ -24,10 +24,10 @@ namespace CSharpFeaturesTest.V30.Linq
             List<string> result = query.ToList();
             List<string> expected = new List<string>() { "a", "a", "a", "d" };
 
-            CollectionAssert.AreEqual(expected, result);
+            Assert.Equal(expected, result);
         }
 
-        [TestMethod]
+        [Fact]
         public void SelectManyClauseTest()
         {
             // from을 여러개와 함께 select clause를 사용하면
@@ -46,7 +46,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 "an", "apple", "a", "day", "the", "quick", "brown", "fox"
             };
 
-            CollectionAssert.AreEqual(expected, result);
+            Assert.Equal(expected, result);
         }
     }
 }

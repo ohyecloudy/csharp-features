@@ -4,15 +4,15 @@
 // let clause (C# Reference) - msdn
 // http://msdn.microsoft.com/en-us/library/bb383976
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System.Linq;
 
 namespace CSharpFeaturesTest.V30.Linq
 {
-    [TestClass]
+    
     public class LetClauseTests
     {
-        [TestMethod]
+        [Fact]
         public void LetClauseTest()
         {
             string[] strings =
@@ -31,7 +31,7 @@ namespace CSharpFeaturesTest.V30.Linq
                 where w[0] == 'p'
                 select word;
 
-            Assert.AreEqual(3, earlyBirdQuery.Count(), "penny, penny, pen 이렇게 3개");
+            Assert.True(3 == earlyBirdQuery.Count(), "penny, penny, pen 이렇게 3개");
         }
     }
 }

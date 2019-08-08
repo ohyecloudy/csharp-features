@@ -3,7 +3,7 @@
 // http://msdn.microsoft.com/en-us/library/dd264736
 
 using Microsoft.CSharp.RuntimeBinder;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V40.DynamicSupport
 {
@@ -12,17 +12,16 @@ namespace CSharpFeaturesTest.V40.DynamicSupport
         void ExistMethod(int input) { }
     }
 
-    [TestClass]
+    
     public class DynamicSupportTests
     {
-        [TestMethod]
-        [ExpectedException(typeof(RuntimeBinderException))]
+        [Fact]
         public void DynamicSupportTest()
         {
             dynamic ec = new ExampleClass();
 
             // dynamic은 type checking을 안 한다. 에러없이 컴파일. 다만 없다면 runtime 예외
-            ec.NonexistentMethod();
+            Assert.Throws<RuntimeBinderException>(() => ec.NonexistentMethod());
         }
     }
 }

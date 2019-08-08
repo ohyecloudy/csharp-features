@@ -2,11 +2,11 @@
 // Auto-Implemented Properties (C# Programming Guide) - msdn
 // http://msdn.microsoft.com/en-us/library/bb384054
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace CSharpFeaturesTest.V30.AutoImplementedProperties
 {
-    [TestClass]
+    
     public class AutoImplementedPropertiesTests
     {
         class Customer
@@ -23,16 +23,16 @@ namespace CSharpFeaturesTest.V30.AutoImplementedProperties
             }
         }
 
-        [TestMethod]
+        [Fact]
         public void AutoImplementedPropertiesTest()
         {
             Customer c = new Customer();
             
             c.CustomerID = 10;
-            Assert.AreEqual(10, c.CustomerID);
+            Assert.Equal(10, c.CustomerID);
 
             c.ManualProperty = 5;
-            Assert.AreEqual(5, c.ManualProperty);
+            Assert.Equal(5, c.ManualProperty);
         }
     }
 }

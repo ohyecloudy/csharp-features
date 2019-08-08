@@ -2,7 +2,7 @@
 // Generics and Reflection - msdn
 // http://msdn.microsoft.com/en-us/library/ms173128.aspx
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using System;
 
 namespace CSharpFeaturesTest.V20.Generics
@@ -26,58 +26,56 @@ namespace CSharpFeaturesTest.V20.Generics
 
     public class Non { }
 
-    [TestClass]
+    
     public class ReflectionTests
     {
-        [TestMethod]
+        [Fact]
         public void IsGenericTypeTest()
         {
-            Assert.IsTrue(typeof(Base<,>).IsGenericType);
-            Assert.IsTrue(typeof(Derived<>).IsGenericType);
-            Assert.IsTrue(typeof(Derived<>).GetField("F").FieldType.IsGenericType);
-            Assert.IsTrue(typeof(Derived<>.Nested).IsGenericType);
-            Assert.IsTrue(typeof(G<>).IsGenericType);
+            Assert.True(typeof(Base<,>).IsGenericType);
+            Assert.True(typeof(Derived<>).IsGenericType);
+            Assert.True(typeof(Derived<>).GetField("F").FieldType.IsGenericType);
+            Assert.True(typeof(Derived<>.Nested).IsGenericType);
+            Assert.True(typeof(G<>).IsGenericType);
 
-            Assert.IsFalse(typeof(int).IsGenericType);
+            Assert.False(typeof(int).IsGenericType);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetGenericArgumentsTest()
         {
-            Assert.AreEqual(2, typeof(Base<,>).GetGenericArguments().Length);
-            Assert.AreEqual(2, typeof(Base<int, float>).GetGenericArguments().Length);
-            Assert.AreEqual(1, typeof(Derived<>).GetGenericArguments().Length);
-            Assert.AreEqual(0, typeof(Non).GetGenericArguments().Length);
+            Assert.Equal(2, typeof(Base<,>).GetGenericArguments().Length);
+            Assert.Equal(2, typeof(Base<int, float>).GetGenericArguments().Length);
+            Assert.Single(typeof(Derived<>).GetGenericArguments());
+            Assert.Empty(typeof(Non).GetGenericArguments());
         }
 
-        [TestMethod]
+        [Fact]
         public void GetGenericTypeDefinitionTest()
         {
-            Assert.IsTrue(typeof(Base<,>).IsGenericTypeDefinition);
-            Assert.IsFalse(typeof(Base<int,int>).IsGenericTypeDefinition);
-            Assert.IsTrue(typeof(Base<int, int>).GetGenericTypeDefinition().IsGenericTypeDefinition);
+            Assert.True(typeof(Base<,>).IsGenericTypeDefinition);
+            Assert.False(typeof(Base<int,int>).IsGenericTypeDefinition);
+            Assert.True(typeof(Base<int, int>).GetGenericTypeDefinition().IsGenericTypeDefinition);
         }
 
-        [TestMethod]
+        [Fact]
         public void GetGenericParameterConstraintsTest()
         {
             {
                 Type[] args = typeof(Base<,>).GetGenericArguments();
-                Assert.AreEqual(0, args[0].GetGenericParameterConstraints().Length);
-                Assert.AreEqual(0, args[1].GetGenericParameterConstraints().Length);
+                Assert.Empty(args[0].GetGenericParameterConstraints());
+                Assert.Empty(args[1].GetGenericParameterConstraints());
             }
 
             {
                 Type[] args = typeof(Constraint<,,>).GetGenericArguments();
-                Assert.AreEqual(3, args.Length);
-                Assert.AreEqual(
-                    1, 
-                    args[0].GetGenericParameterConstraints().Length,
+                Assert.Equal(3, args.Length);
+                Assert.True(
+                    args[0].GetGenericParameterConstraints().Length == 1,
                     "struct는 ValueType class를 상속받는다. 그래서 1개");
-                Assert.AreEqual(1, args[1].GetGenericParameterConstraints().Length);
-                Assert.AreEqual(
-                    0, 
-                    args[2].GetGenericParameterConstraints().Length,
+                Assert.Single(args[1].GetGenericParameterConstraints());
+                Assert.True(
+                    args[2].GetGenericParameterConstraints().Length == 0,
                     "class, new 이렇게 constraint가 두개이지만 interface, base class constraint 개수만 리턴");
             }
         }
